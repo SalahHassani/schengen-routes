@@ -200,3 +200,12 @@ export const FOOTER_CONTACT_INFO = {
   whatsappDirectUrl: CONTACT.whatsappDirectUrl,
   whatsappCommunityUrl: CONTACT.whatsappCommunityUrl,
 } as const;
+
+export const FOOTER_LEGAL_LINKS = [
+  { label: "Legal Notice", href: "/legal" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms & Conditions", href: "/terms-and-conditions" },
+  { label: "Cookie Policy", href: "/cookie-policy" },
+  { label: "Disclaimer", href: "/disclaimer" },
+  { label: "Imprint", href: "/imprint" },
+] as const;

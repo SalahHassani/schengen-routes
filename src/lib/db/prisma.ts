@@ -7,13 +7,26 @@ const globalForPrisma = globalThis as unknown as {
   pgPool: Pool | undefined;
 };
 
+function resolveDatabaseUrl(): string {
+  const configured = process.env.DATABASE_URL?.trim();
+  if (configured) {
+    return configured;
+  }
+  if (process.env.NODE_ENV === "production") {
+    throw new Error("DATABASE_URL must be configured in production.");
+  }
+  return "postgresql://postgres:postgres@localhost:5432/schengen_routes?schema=public";
+}
+
 function createPrismaClient(): PrismaClient {
-  const connectionString =
-    process.env.DATABASE_URL || "postgresql://postgres:postgres@localhost:5432/schengen_routes";
+  const connectionString = resolveDatabaseUrl();
   const pool =
     globalForPrisma.pgPool ??
     new Pool({
       connectionString,
+      max: process.env.NODE_ENV === "production" ? 10 : 5,
+      idleTimeoutMillis: 30_000,
+      connectionTimeoutMillis: 10_000,
     });
 
   if (process.env.NODE_ENV !== "production") {
