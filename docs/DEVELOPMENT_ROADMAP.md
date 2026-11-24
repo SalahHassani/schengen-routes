@@ -5,7 +5,7 @@
 | **M0**    | Project Initialization and Documentation      | Completed |
 | **M1**    | Brand Identity and Design System              | Completed |
 | **M2**    | Shared Layout and Navigation                  | Completed |
-| **M3**    | Homepage                                      | Pending   |
+| **M3**    | Homepage                                      | Completed |
 | **M4**    | Study in Europe                               | Pending   |
 | **M5**    | Visa Guide                                    | Pending   |
 | **M6**    | Travel                                        | Pending   |

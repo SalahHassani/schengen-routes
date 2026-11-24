@@ -15,7 +15,8 @@
 - `src/components/ui/`: Service-agnostic foundational UI primitives (`Button`, `Container`, `Section`, `Heading`, `Paragraph`, `Eyebrow`, `Card`, `Badge`, `Divider`, `Input`, `Textarea`, `Link`, `BrandLogo`).
 - `src/components/layout/`: Global structural shell (`SiteHeader`, `DesktopNavigation`, `MobileNavigation`, `SiteFooter`, `PageLayout`).
 - `src/components/navigation/`: Reusable active-route links (`NavLink`) and accessible dropdown menus (`NavigationDropdown`).
-- `src/components/`: Isolated service modules (`study/`, `visa/`, `travel/`, `explore/`, `contact/`) introduced in M3–M9.
-- `src/data/` & `src/lib/`: Brand constants (`constants.ts`), class merging (`utils.ts`), and normalized TypeScript datasets accessed through clean repository selectors.
+- `src/components/home/`: Production homepage sections (`HeroSection`, `BrandIntroduction`, `ServiceGrid`, `ServiceCard`, `CountrySection`, `CountryCard`, `StudyOpportunities`, `WhyChooseUs`, `DestinationSection`, `DestinationCard`, `HowItWorks`, `LatestUpdates`, `ConsultationCta`).
+- `src/components/`: Isolated service modules (`study/`, `visa/`, `travel/`, `explore/`, `contact/`) introduced in M4–M9.
+- `src/data/` & `src/lib/`: Brand constants (`constants.ts`), class merging (`utils.ts`), homepage content datasets (`services.ts`, `countries.ts`, `destinations.ts`), and repository selectors.
 - `src/styles/`: Central design token definitions (`tokens.ts`).
 - `src/types/`: Strict domain contracts enforcing required fields such as `sourceUrl` and `lastReviewed`.

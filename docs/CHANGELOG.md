@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.0] - Milestone 3: Homepage Design and Implementation
+
+### Added
+
+- Created structured homepage data modules in `src/data/services.ts`, `src/data/countries.ts`, and `src/data/destinations.ts`.
+- Sourced and placed 14 distinct European editorial images across `public/assets/images/` (`hero/`, `study/`, `countries/`, `destinations/`).
+- Built all 10 homepage sections in `src/components/home/`: `HeroSection`, `BrandIntroduction`, `ServiceGrid`, `ServiceCard`, `CountrySection`, `CountryCard`, `StudyOpportunities`, `WhyChooseUs`, `DestinationSection`, `DestinationCard`, `HowItWorks`, `LatestUpdates`, and `ConsultationCta`.
+- Updated `src/app/page.tsx` with the complete production homepage composition, route metadata, and Open Graph tags.
+- Created `docs/HOMEPAGE_IMPLEMENTATION.md` and updated `docs/TECHNICAL_ARCHITECTURE.md`, `docs/WEBSITE_REQUIREMENTS.md`, and `docs/DEVELOPMENT_ROADMAP.md`.
+
 ## [0.3.0] - Milestone 2: Shared Layout and Navigation
 
 ### Added
