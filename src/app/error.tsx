@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -36,12 +37,12 @@ export default function Error({
             <Button type="button" variant="primary" size="md" onClick={() => reset()}>
               Try Again
             </Button>
-            <a
+            <Link
               href="/"
               className="border-border-default text-text-primary hover:bg-surface-muted inline-flex h-11 items-center justify-center rounded-lg border px-5 text-sm font-semibold transition-colors"
             >
               Back to Home
-            </a>
+            </Link>
           </div>
         </div>
       </Container>
