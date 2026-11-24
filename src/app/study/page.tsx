@@ -1,33 +1,41 @@
 import type { Metadata } from "next";
-import { Badge } from "@/components/ui/badge";
-import { Container } from "@/components/ui/container";
-import { Divider } from "@/components/ui/divider";
-import { Heading } from "@/components/ui/heading";
-import { Eyebrow, Paragraph } from "@/components/ui/paragraph";
-import { Section } from "@/components/ui/section";
+import { CountryGrid } from "@/components/study/country-grid";
+import { DeadlineList } from "@/components/study/deadline-list";
+import { ProgrammeDirectory } from "@/components/study/programme-directory";
+import { ScholarshipDirectory } from "@/components/study/scholarship-directory";
+import { StudyCta } from "@/components/study/study-cta";
+import { StudyHero } from "@/components/study/study-hero";
+import { StudySubnav } from "@/components/study/study-subnav";
+import { UniversityDirectory } from "@/components/study/university-directory";
+import { STUDY_COUNTRIES } from "@/data/study/countries";
+import { STUDY_APPLICATION_SCHEDULES } from "@/data/study/deadlines";
+import { STUDY_PROGRAMMES } from "@/data/study/programmes";
+import { STUDY_SCHOLARSHIPS } from "@/data/study/scholarships";
+import { STUDY_UNIVERSITIES } from "@/data/study/universities";
+import { BRAND } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Study in Europe",
+  title: `Study in Europe | ${BRAND.name}`,
   description:
-    "Explore European countries, accredited universities, Bachelor's and Master's programmes, scholarships, and application timelines.",
+    "Discover European universities, academic programmes, scholarships, and structured application timelines across Germany, Italy, Hungary, France, Netherlands, and Austria.",
 };
 
 export default function StudyPage() {
   return (
-    <Section background="white" spacing="lg">
-      <Container size="narrow">
-        <Badge variant="default">Milestone 4 • Section Placeholder</Badge>
-        <Eyebrow className="mt-4">European Higher Education</Eyebrow>
-        <Heading as="h1" className="mt-2">
-          Study in Europe
-        </Heading>
-        <Divider variant="gold" className="mt-4" />
-        <Paragraph size="lg" className="mt-6">
-          Discover European study destinations, accredited universities, English-taught
-          Bachelor&apos;s and Master&apos;s programmes, scholarship pathways, and verified
-          application deadlines.
-        </Paragraph>
-      </Container>
-    </Section>
+    <>
+      <StudyHero />
+      <StudySubnav activeHref="/study" />
+      <CountryGrid countries={STUDY_COUNTRIES} background="white" />
+      <ProgrammeDirectory
+        programmes={STUDY_PROGRAMMES}
+        countries={STUDY_COUNTRIES}
+        universities={STUDY_UNIVERSITIES}
+        background="subtle"
+      />
+      <UniversityDirectory universities={STUDY_UNIVERSITIES} background="white" />
+      <ScholarshipDirectory scholarships={STUDY_SCHOLARSHIPS} background="subtle" />
+      <DeadlineList schedules={STUDY_APPLICATION_SCHEDULES} background="white" />
+      <StudyCta />
+    </>
   );
 }

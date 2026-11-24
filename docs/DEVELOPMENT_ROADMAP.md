@@ -6,7 +6,7 @@
 | **M1**    | Brand Identity and Design System              | Completed |
 | **M2**    | Shared Layout and Navigation                  | Completed |
 | **M3**    | Homepage                                      | Completed |
-| **M4**    | Study in Europe                               | Pending   |
+| **M4**    | Study in Europe                               | Completed |
 | **M5**    | Visa Guide                                    | Pending   |
 | **M6**    | Travel                                        | Pending   |
 | **M7**    | Explore Europe                                | Pending   |

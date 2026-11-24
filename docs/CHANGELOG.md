@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.0] - Milestone 4: Study in Europe
+
+### Added
+
+- Defined strict Study domain models in `src/types/study.ts` (`StudyCountryRecord`, `StudyUniversityRecord`, `StudyProgrammeRecord`, `StudyScholarshipRecord`, `ApplicationSchedule`) with required `sourceUrl` and `lastReviewed` fields.
+- Implemented date-derived application status logic (`deriveDeadlineStatus`, `deriveScheduleStatus`, `formatIsoDateForDisplay`) in `src/lib/study/deadline-status.ts` separating opening dates, deadlines, and intake dates.
+- Implemented search and multi-facet filtering utilities (`filterUniversities`, `filterProgrammes`) in `src/lib/study/filters.ts`.
+- Added Study datasets in `src/data/study/` (`countries.ts`, `universities.ts`, `programmes.ts`, `scholarships.ts`, `deadlines.ts`) with verified official links, review dates, and honest empty states where records await verification.
+- Built Study UI components in `src/components/study/` and sub-routes under `src/app/study/` (`/study`, `/study/countries`, `/study/universities`, `/study/programmes`, `/study/scholarships`, `/study/application-deadlines`).
+- Created `docs/STUDY_SECTION.md` and `docs/STUDY_DATA_MODEL.md`, and updated `docs/WEBSITE_REQUIREMENTS.md`, `docs/TECHNICAL_ARCHITECTURE.md`, `docs/DEVELOPMENT_ROADMAP.md`, and `docs/CHANGELOG.md`.
+
 ## [0.4.0] - Milestone 3: Homepage Design and Implementation
 
 ### Added
