@@ -9,7 +9,7 @@
 | **M4**    | Study in Europe                               | Completed |
 | **M5**    | Visa Guide                                    | Completed |
 | **M6**    | Travel                                        | Completed |
-| **M7**    | Explore Europe                                | Pending   |
+| **M7**    | Explore Europe                                | Completed |
 | **M8**    | About Us and Contact                          | Pending   |
 | **M9**    | Enquiry and Consultation System               | Pending   |
 | **M10**   | Search, Filtering and Structured Information  | Pending   |

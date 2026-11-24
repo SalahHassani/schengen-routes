@@ -7,16 +7,17 @@
 - **Study in Europe Section (`/study`):** Landing page plus `/study/countries`, `/study/universities`, `/study/programmes`, `/study/scholarships`, and `/study/application-deadlines`, backed by typed records, search/filtering, dynamic deadline status derivation, source links, review dates, and honest empty states. _(Implemented in M4.)_
 - **European Visa Guide Section (`/visa-guide`):** Landing page plus `/visa-guide/schengen-visa`, `/visa-guide/student-visa`, `/visa-guide/national-visas`, `/visa-guide/countries`, `/visa-guide/document-checklists`, `/visa-guide/application-process`, and `/visa-guide/faqs`, featuring separate EU/Schengen membership indicators, 3-tier document classifications, review statuses, source citations, and prominent non-authority disclaimers. _(Implemented in M5.)_
 - **European Travel Section (`/travel`):** Landing page plus `/travel/destinations`, `/travel/countries`, `/travel/cities`, `/travel/guides`, `/travel/itineraries`, `/travel/transportation`, and `/travel/accommodation`, featuring searchable/filterable destination, city, guide, and itinerary discovery, transport and accommodation guidance, practical travel tips, official tourism/operator links, and clear non-agency boundaries. _(Implemented in M6.)_
-- **Dedicated Service Sections:** Independent landing pages and dynamic internal routes for Explore. _(Route placeholder active in M2; full section content implemented in M7.)_
+- **Explore Europe Section (`/explore`):** Editorial cultural discovery platform plus 9 category routes (`/explore/culture`, `/explore/landmarks`, `/explore/history`, `/explore/food`, `/explore/festivals`, `/explore/student-life`, `/explore/nature`, `/explore/experiences`, `/explore/stories`) and static-generated detail pages (`/explore/landmarks/[slug]`, `/explore/stories/[slug]`, `/explore/experiences/[slug]`) with client-side search/filtering, breadcrumbs, source links, and review dates. _(Implemented in M7.)_
+- **About Us & Contact Pages (`/about`, `/contact`):** Full editorial About Us and Contact pages. _(Route placeholders active in M2; full section content implemented in M8.)_
 - **Legal & Compliance Pages:** Privacy Policy, Terms and Conditions, Cookie Policy. _(Scheduled for M13.)_
 
 ## Functional Requirements
 
 - **Dynamic Consultation Enquiry Form:** Adapts fields based on selected service (`Study`, `Visa Guide`, `Travel`, `Explore`) with client + server validation and spam protection. _(Scheduled for M8–M9.)_
 - **WhatsApp Integration:** Direct business WhatsApp contact (`+36 70 792 3072`) separate from the official WhatsApp Community link (`https://chat.whatsapp.com/KJBfVD5hNN5Bxxk0YfX1xj`). _(Implemented in global footer and homepage CTA in M2–M3.)_
-- **Structured Data Models:** Reusable TypeScript records for services, countries, destinations, study entities, visa guide entities, and travel entities.
+- **Structured Data Models:** Reusable TypeScript records for services, countries, destinations, study entities, visa guide entities, travel entities, and explore entities.
 
 ## Non-Functional Requirements
 
 - **Responsive Design:** Full support from `320px` small mobile screens up to `1920px+` desktop displays with zero horizontal scrolling.
-- **Accessibility & SEO:** Semantic HTML (`header`, `nav`, `main`, `footer`, `section`), skip-to-content link, WCAG AA contrast, keyboard navigation, per-page metadata, and Open Graph tags.
+- **Accessibility & SEO:** Semantic HTML (`header`, `nav`, `main`, `footer`, `section`, `article`), skip-to-content link, WCAG AA contrast, keyboard navigation, per-page metadata, and Open Graph tags.

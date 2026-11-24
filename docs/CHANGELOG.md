@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.8.0] - Milestone 7: Explore Europe Discovery Platform
+
+### Added
+
+- Defined strict Explore domain models in `src/types/explore.ts` (`ExploreCategory`, `ExplorePlace`, `ExploreStory`, `ExploreExperience`, `ExploreEvent`, `ExploreFilterState`, `ExploreSourceReference`).
+- Implemented search and multi-facet filtering (`category`, `country`, `contentType`) in `src/lib/explore/filters.ts`.
+- Added source-backed Explore datasets in `src/data/explore/` (`categories.ts`, `places.ts`, `stories.ts`, `experiences.ts`, `events.ts`) using verified local photography and official cultural, archaeological, and tourism portals without fabricated dates, fees, or visitor statistics.
+- Built Explore UI components in `src/components/explore/` (`ExploreHero`, `ExploreCategoryNavigation`, `ExploreBreadcrumbs`, `ExploreCategoryCard`, `ExplorePlaceCard`, `ExploreStoryCard`, `ExploreExperienceCard`, `FeaturedDiscoveries`, `CultureSection`, `ExploreArticleLayout`, `ExploreDirectory`, `ExploreCta`) and routes under `src/app/explore/` (`/explore`, `/explore/culture`, `/explore/landmarks`, `/explore/history`, `/explore/food`, `/explore/festivals`, `/explore/student-life`, `/explore/nature`, `/explore/experiences`, `/explore/stories`, `/explore/landmarks/[slug]`, `/explore/stories/[slug]`, `/explore/experiences/[slug]`).
+- Created `docs/EXPLORE_SECTION.md`, `docs/EXPLORE_DATA_MODEL.md`, and `docs/EXPLORE_CONTENT_SOURCES.md`, and updated `docs/WEBSITE_REQUIREMENTS.md`, `docs/TECHNICAL_ARCHITECTURE.md`, `docs/DEVELOPMENT_ROADMAP.md`, and `docs/CHANGELOG.md`.
+
 ## [0.7.0] - Milestone 6: European Travel Discovery Platform
 
 ### Added
