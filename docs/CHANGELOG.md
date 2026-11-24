@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.6.0] - Milestone 5: European Visa Guide Platform Foundation
+
+### Added
+
+- Defined strict Visa Guide domain models in `src/types/visa-guide.ts` (`VisaCategoryRecord`, `CountryVisaGuideRecord`, `DocumentChecklistItem`, `ApplicationProcessStep`, `VisaFaqItem`) with separate `isEuMember` and `isSchengenMember` booleans, 3-tier document classifications, review status tracking, and official source references.
+- Implemented review-status badges/descriptions (`src/lib/visa-guide/review-status.ts`), HTTPS source validation (`src/lib/visa-guide/source-validation.ts`), and search/multi-facet filtering (`src/lib/visa-guide/filters.ts`).
+- Added source-backed datasets in `src/data/visa-guide/` (`visa-categories.ts`, `countries.ts`, `document-checklists.ts`, `application-processes.ts`, `faqs.ts`) citing official European Commission, foreign ministry, and national immigration portals without fabricated fees or processing times.
+- Built Visa Guide UI components in `src/components/visa-guide/` (`VisaHero`, `VisaSubnav`, `VisaCategoryCard`, `VisaCategoryGrid`, `CountryGuideCard`, `CountryGuideGrid`, `DocumentChecklist`, `ApplicationSteps`, `VisaFaq`, `VisaDisclaimer`, `ReviewStatusIndicator`, `VisaCta`) and routes under `src/app/visa-guide/` (`/visa-guide`, `/visa-guide/schengen-visa`, `/visa-guide/student-visa`, `/visa-guide/national-visas`, `/visa-guide/countries`, `/visa-guide/document-checklists`, `/visa-guide/application-process`, `/visa-guide/faqs`).
+- Created `docs/VISA_GUIDE.md`, `docs/VISA_DATA_MODEL.md`, and `docs/VISA_SOURCE_VERIFICATION.md`, and updated `docs/WEBSITE_REQUIREMENTS.md`, `docs/TECHNICAL_ARCHITECTURE.md`, `docs/DEVELOPMENT_ROADMAP.md`, and `docs/CHANGELOG.md`.
+
 ## [0.5.0] - Milestone 4: Study in Europe
 
 ### Added
