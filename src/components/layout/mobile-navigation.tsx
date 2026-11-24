@@ -10,12 +10,16 @@ import { Button } from "@/components/ui/button";
 import { BRAND } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
 export function MobileNavigation() {
   const [open, setOpen] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const drawerId = useId();
   const toggleRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -30,6 +34,25 @@ export function MobileNavigation() {
         setOpen(false);
         setExpandedSection(null);
         toggleRef.current?.focus();
+        return;
+      }
+
+      if (event.key === "Tab" && dialogRef.current) {
+        const focusables = Array.from(
+          dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
+        );
+        if (focusables.length === 0) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
       }
     }
 
@@ -74,11 +97,12 @@ export function MobileNavigation() {
           <div
             aria-hidden="true"
             onClick={closeDrawer}
-            className="bg-brand-navy/50 fixed inset-0 backdrop-blur-[1px]"
+            className="bg-brand-navy/55 fixed inset-0"
           />
 
           {/* Slide-over panel */}
           <div
+            ref={dialogRef}
             id={drawerId}
             role="dialog"
             aria-modal="true"
@@ -86,12 +110,12 @@ export function MobileNavigation() {
             className="shadow-elevated relative z-10 flex h-full w-full max-w-sm flex-col overflow-y-auto bg-white"
           >
             {/* Drawer Header */}
-            <div className="border-border-subtle flex items-center justify-between gap-3 border-b px-4 py-3.5">
+            <div className="border-border-subtle flex items-center justify-between gap-2 border-b px-4 py-3.5">
               <NextLink
                 href="/"
                 onClick={closeDrawer}
                 aria-label={`${BRAND.name} home`}
-                className="inline-flex items-center"
+                className="inline-flex min-w-0 items-center"
               >
                 <BrandLogo size="sm" surface="light" />
               </NextLink>
@@ -104,7 +128,7 @@ export function MobileNavigation() {
                   closeDrawer();
                   toggleRef.current?.focus();
                 }}
-                className="border-border-default text-brand-navy hover:border-brand-blue hover:bg-surface-blue-tint rounded-button focus-visible:outline-brand-blue inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center border bg-white p-2 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2"
+                className="border-border-default text-brand-navy hover:border-brand-blue hover:bg-surface-blue-tint rounded-button focus-visible:outline-brand-blue inline-flex min-h-11 min-w-11 shrink-0 cursor-pointer items-center justify-center border bg-white p-2 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2"
               >
                 <svg
                   aria-hidden="true"
@@ -155,7 +179,7 @@ export function MobileNavigation() {
                             onClick={() =>
                               setExpandedSection((prev) => (prev === item.href ? null : item.href))
                             }
-                            className="text-brand-navy hover:bg-surface-subtle hover:text-brand-blue inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-lg transition-colors duration-150"
+                            className="text-brand-navy hover:bg-surface-subtle hover:text-brand-blue inline-flex min-h-11 min-w-11 shrink-0 cursor-pointer items-center justify-center rounded-lg transition-colors duration-150"
                           >
                             <svg
                               aria-hidden="true"
@@ -183,11 +207,11 @@ export function MobileNavigation() {
                               <NextLink
                                 href={subItem.href}
                                 onClick={closeDrawer}
-                                className="hover:bg-surface-blue-tint text-text-secondary hover:text-brand-blue flex items-center justify-between gap-2 rounded-md px-2.5 py-2 text-sm"
+                                className="hover:bg-surface-blue-tint text-text-secondary hover:text-brand-blue flex min-h-11 items-center justify-between gap-2 rounded-md px-2.5 py-2 text-sm"
                               >
                                 <span className="font-medium">{subItem.label}</span>
                                 {subItem.comingSoon && (
-                                  <span className="border-brand-gold/50 bg-surface-gold-tint text-brand-navy rounded-full border px-2 py-0.5 text-[10px] font-semibold">
+                                  <span className="border-brand-gold/50 bg-surface-gold-tint text-brand-navy shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-semibold">
                                     Planned
                                   </span>
                                 )}

@@ -112,6 +112,7 @@ export function ContactForm() {
       setFieldErrors(clientErrors);
       setFormError("Please review the highlighted fields and try again.");
       setSuccess(null);
+      requestAnimationFrame(() => statusRef.current?.focus());
       return;
     }
 
@@ -334,8 +335,10 @@ export function ContactForm() {
             <select
               id="contact-service"
               name="service"
+              required
               disabled={submitting}
               aria-invalid={Boolean(fieldErrors.service)}
+              aria-describedby={fieldErrors.service ? "contact-service-error" : undefined}
               value={values.service}
               onChange={(e) => {
                 setValues((prev) => ({
@@ -355,7 +358,11 @@ export function ContactForm() {
               ))}
             </select>
             {fieldErrors.service ? (
-              <p role="alert" className="mt-1.5 text-xs font-medium text-red-700">
+              <p
+                id="contact-service-error"
+                role="alert"
+                className="mt-1.5 text-xs font-medium text-red-700"
+              >
                 {fieldErrors.service}
               </p>
             ) : null}
@@ -422,6 +429,9 @@ export function ContactForm() {
               name="preferredContact"
               disabled={submitting}
               aria-invalid={Boolean(fieldErrors.preferredContact)}
+              aria-describedby={
+                fieldErrors.preferredContact ? "contact-preferred-error" : undefined
+              }
               value={values.preferredContact}
               onChange={(e) => {
                 setValues((prev) => ({
@@ -439,7 +449,11 @@ export function ContactForm() {
               ))}
             </select>
             {fieldErrors.preferredContact ? (
-              <p role="alert" className="mt-1.5 text-xs font-medium text-red-700">
+              <p
+                id="contact-preferred-error"
+                role="alert"
+                className="mt-1.5 text-xs font-medium text-red-700"
+              >
                 {fieldErrors.preferredContact}
               </p>
             ) : null}
