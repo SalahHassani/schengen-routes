@@ -21,3 +21,8 @@
 
 - **Responsive Design:** Full support from `320px` small mobile screens up to `1920px+` desktop displays with zero horizontal scrolling.
 - **Accessibility & SEO:** Semantic HTML (`header`, `nav`, `main`, `footer`, `section`, `article`), skip-to-content link, WCAG AA contrast, keyboard navigation, per-page metadata, and Open Graph tags.
+
+### Search & Discovery Requirements (M10)
+
+- **Global Search (`/search`):** Visitors can search across Study, Visa Guide, Travel, and Explore content with grouped results, service-area/content-type/country filters, accessible result-count announcements, and clear empty-state reset actions.
+- **Data Integrity & SEO:** Search operates strictly on verified local structured data, excludes private enquiry records, and configures `/search` with `noindex, follow` and canonical `/search` metadata.

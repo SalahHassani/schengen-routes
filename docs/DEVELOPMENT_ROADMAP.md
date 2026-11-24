@@ -12,7 +12,7 @@
 | **M7**    | Explore Europe                                | Completed |
 | **M8**    | About Us and Contact                          | Completed |
 | **M9**    | Enquiry and Consultation System               | Completed |
-| **M10**   | Search, Filtering and Structured Information  | Pending   |
+| **M10**   | Search, Filtering and Structured Information  | Completed |
 | **M11**   | SEO and Content Optimisation                  | Pending   |
 | **M12**   | Performance, Responsiveness and Accessibility | Pending   |
 | **M13**   | Security, Legal Pages and Deployment          | Pending   |

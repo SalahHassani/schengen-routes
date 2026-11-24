@@ -89,3 +89,13 @@ All notable changes to this project will be documented in this file.
 - Initialized Next.js App Router project with React, TypeScript (strict mode), and Tailwind CSS.
 - Configured ESLint and Prettier (`prettier-plugin-tailwindcss`) with `lint`, `typecheck`, `format`, and `format:check` npm scripts.
 - Created modular directory structure, `.env.example`, root `README.md`, and Milestone 0 project documentation under `docs/`.
+
+## [M10] - 2026-11-24
+
+### Added
+
+- Unified in-memory search index (`src/lib/search/index.ts`, `src/types/search.ts`) covering Study, Visa Guide, Travel, and Explore records.
+- URL query parameter sanitization and serialization helpers (`src/lib/search/query-params.ts`).
+- Reusable search and filter UI controls (`src/components/search/search-controls.tsx`, `src/components/search/global-search-client.tsx`) and `/search` route (`src/app/search/page.tsx`) with `noindex, follow` metadata.
+- Cross-platform Node test runner (`scripts/run-tests.mjs`, `npm test`) and M10 unit test suite (`src/lib/__tests__/search-and-filtering.test.ts`).
+- Architecture and data-model documentation (`docs/SEARCH_AND_FILTERING.md`, `docs/STRUCTURED_INFORMATION.md`).
