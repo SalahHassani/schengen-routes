@@ -1,41 +1,77 @@
-// scripts/run-tests.mjs
 import { execFileSync } from "node:child_process";
-import { mkdtempSync, readdirSync, rmSync } from "node:fs";
+import { existsSync, mkdtempSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 
 const tempDir = mkdtempSync(join(tmpdir(), "schengen-routes-tests-"));
+const hookPath = join(tempDir, "alias-loader.mjs");
 const testDir = resolve("src/lib/__tests__");
+
 const entryPoints = readdirSync(testDir)
   .filter((file) => file.endsWith(".test.ts"))
   .map((file) => join(testDir, file));
 
+const rootHref = pathToFileURL(`${resolve(".")}/`).href;
+
+const hookSource = `
+import { registerHooks } from "node:module";
+import { existsSync } from "node:fs";
+import { fileURLToPath, pathToFileURL } from "node:url";
+
+const rootHref = ${JSON.stringify(rootHref)};
+
+function resolveCandidate(baseUrl) {
+  const candidates = [
+    baseUrl,
+    new URL(\`\${baseUrl.href}.ts\`),
+    new URL(\`\${baseUrl.href}/index.ts\`),
+  ];
+  for (const candidate of candidates) {
+    if (candidate.protocol === "file:" && existsSync(fileURLToPath(candidate))) {
+      return candidate.href;
+    }
+  }
+  return null;
+}
+
+registerHooks({
+  resolve(specifier, context, nextResolve) {
+    if (specifier.startsWith("@/")) {
+      const target = new URL(\`src/\${specifier.slice(2)}\`, rootHref);
+      const resolved = resolveCandidate(target);
+      if (resolved) {
+        return nextResolve(resolved, context);
+      }
+    }
+
+    if (
+      (specifier.startsWith("./") || specifier.startsWith("../")) &&
+      context.parentURL?.startsWith("file://")
+    ) {
+      const target = new URL(specifier, context.parentURL);
+      const resolved = resolveCandidate(target);
+      if (resolved) {
+        return nextResolve(resolved, context);
+      }
+    }
+
+    return nextResolve(specifier, context);
+  },
+});
+`;
+
 try {
-  const esbuildBin =
-    process.platform === "win32"
-      ? resolve("node_modules/.bin/esbuild.cmd")
-      : resolve("node_modules/.bin/esbuild");
+  writeFileSync(hookPath, hookSource, "utf8");
+  const hookUri = pathToFileURL(hookPath).href;
 
-  execFileSync(
-    esbuildBin,
-    [
-      ...entryPoints,
-      "--bundle",
-      "--platform=node",
-      "--format=esm",
-      `--outdir=${tempDir}`,
-      "--alias:@=./src",
-    ],
-    { stdio: "inherit", shell: process.platform === "win32" }
-  );
-
-  const compiledTests = readdirSync(tempDir)
-    .filter((file) => file.endsWith(".test.mjs"))
-    .map((file) => join(tempDir, file));
-
-  execFileSync(process.execPath, ["--test", ...compiledTests], {
-    stdio: "inherit",
-  });
+  if (existsSync(testDir) && entryPoints.length > 0) {
+    execFileSync(
+      process.execPath,
+      ["--experimental-strip-types", "--import", hookUri, "--test", ...entryPoints],
+      { stdio: "inherit" }
+    );
+  }
 } finally {
   rmSync(tempDir, { recursive: true, force: true });
 }

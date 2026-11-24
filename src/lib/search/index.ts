@@ -247,13 +247,23 @@ function buildSearchIndex(): SearchIndexItem[] {
     items.push({
       id: `travel-country-${tc.slug}`,
       title: tc.name,
-      summary: tc.summary,
+      summary: tc.introduction,
       serviceArea: "Travel",
       contentType: "Travel Country",
       href: "/travel/countries",
       country: tc.name,
       category: tc.region,
-      searchText: [tc.name, tc.region, tc.summary, tc.travelStyleSummary, ...tc.highlightCities]
+      searchText: [
+        tc.name,
+        tc.region,
+        tc.introduction,
+        tc.transportationOverview,
+        tc.currencyInfo,
+        tc.languageInfo,
+        ...tc.mainDestinations,
+        ...tc.importantCities,
+        ...tc.practicalTravelInfo,
+      ]
         .join(" ")
         .toLowerCase(),
     });
