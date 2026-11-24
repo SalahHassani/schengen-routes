@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -9,128 +9,190 @@ import { Input } from "@/components/ui/input";
 import { Eyebrow, Paragraph } from "@/components/ui/paragraph";
 import { Textarea } from "@/components/ui/textarea";
 import { BRAND } from "@/lib/constants";
+import {
+  ENQUIRY_SERVICES,
+  PREFERRED_CONTACT_METHODS,
+  type EnquiryService,
+  type PreferredContactMethod,
+} from "@/lib/enquiries/validation";
 
-type ServiceOption = "Study" | "Visa Guide" | "Travel" | "Explore" | "General enquiry";
-
-interface ContactFormValues {
+interface FormState {
   fullName: string;
   email: string;
+  service: EnquiryService;
   subject: string;
-  service: ServiceOption;
   message: string;
-  consent: boolean;
+  countryOfResidence: string;
+  destinationCountry: string;
+  preferredContact: "" | PreferredContactMethod;
+  privacyAcknowledged: boolean;
+  website: string;
 }
 
-interface ContactFormErrors {
-  fullName?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
-  consent?: string;
+interface SubmissionSuccess {
+  referenceNumber: string;
+  service: string;
+  submittedAt: string;
+  acknowledgementSent: boolean;
 }
 
-const SERVICE_OPTIONS: readonly ServiceOption[] = [
-  "Study",
-  "Visa Guide",
-  "Travel",
-  "Explore",
-  "General enquiry",
-] as const;
+const INITIAL_FORM_STATE: FormState = {
+  fullName: "",
+  email: "",
+  service: "Study",
+  subject: "",
+  message: "",
+  countryOfResidence: "",
+  destinationCountry: "",
+  preferredContact: "",
+  privacyAcknowledged: false,
+  website: "",
+};
 
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function ContactForm() {
-  const [values, setValues] = useState<ContactFormValues>({
-    fullName: "",
-    email: "",
-    subject: "",
-    service: "Study",
-    message: "",
-    consent: false,
-  });
+  const [values, setValues] = useState<FormState>(INITIAL_FORM_STATE);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [formError, setFormError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState<SubmissionSuccess | null>(null);
 
-  const [errors, setErrors] = useState<ContactFormErrors>({});
-  const [validatedPreviewReady, setValidatedPreviewReady] = useState(false);
+  const statusRef = useRef<HTMLDivElement | null>(null);
+  const submitLockRef = useRef(false);
 
-  function validate(current: ContactFormValues): ContactFormErrors {
-    const nextErrors: ContactFormErrors = {};
+  function validateClient(current: FormState): Record<string, string> {
+    const errors: Record<string, string> = {};
 
     if (!current.fullName.trim()) {
-      nextErrors.fullName = "Please enter your full name.";
+      errors.fullName = "Full name is required.";
+    } else if (current.fullName.trim().length < 2) {
+      errors.fullName = "Please enter at least 2 characters for your full name.";
     }
 
     if (!current.email.trim()) {
-      nextErrors.email = "Please enter your email address.";
-    } else if (!EMAIL_REGEX.test(current.email.trim())) {
-      nextErrors.email = "Please enter a valid email address (for example, name@example.com).";
+      errors.email = "Email address is required.";
+    } else if (!EMAIL_PATTERN.test(current.email.trim())) {
+      errors.email = "Please enter a valid email address.";
+    }
+
+    if (!ENQUIRY_SERVICES.includes(current.service)) {
+      errors.service = "Please select a valid service option.";
     }
 
     if (!current.subject.trim()) {
-      nextErrors.subject = "Please enter a brief subject for your enquiry.";
+      errors.subject = "Subject is required.";
+    } else if (current.subject.trim().length < 3) {
+      errors.subject = "Please enter a subject of at least 3 characters.";
     }
 
     if (!current.message.trim()) {
-      nextErrors.message = "Please enter your question or message.";
+      errors.message = "Message is required.";
     } else if (current.message.trim().length < 15) {
-      nextErrors.message = "Please provide at least 15 characters so we understand your question.";
+      errors.message = "Please enter a message of at least 15 characters.";
     }
 
-    if (!current.consent) {
-      nextErrors.consent =
-        "Please confirm that you understand this general form does not process sensitive documents.";
+    if (!current.privacyAcknowledged) {
+      errors.privacyAcknowledged =
+        "Please acknowledge that this general enquiry form does not collect sensitive documents.";
     }
 
-    return nextErrors;
+    return errors;
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const validationErrors = validate(values);
-    setErrors(validationErrors);
 
-    if (Object.keys(validationErrors).length === 0) {
-      setValidatedPreviewReady(true);
-    } else {
-      setValidatedPreviewReady(false);
+    if (submitLockRef.current || submitting) {
+      return;
+    }
+
+    const clientErrors = validateClient(values);
+    if (Object.keys(clientErrors).length > 0) {
+      setFieldErrors(clientErrors);
+      setFormError("Please review the highlighted fields and try again.");
+      setSuccess(null);
+      return;
+    }
+
+    submitLockRef.current = true;
+    setSubmitting(true);
+    setFieldErrors({});
+    setFormError(null);
+    setSuccess(null);
+
+    try {
+      const payload = {
+        fullName: values.fullName.trim(),
+        email: values.email.trim(),
+        service: values.service,
+        subject: values.subject.trim(),
+        message: values.message.trim(),
+        countryOfResidence: values.countryOfResidence.trim() || undefined,
+        destinationCountry: values.destinationCountry.trim() || undefined,
+        preferredContact: values.preferredContact || undefined,
+        privacyAcknowledged: values.privacyAcknowledged,
+        website: values.website,
+      };
+
+      const response = await fetch("/api/enquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = (await response.json().catch(() => ({}))) as {
+        error?: string;
+        fieldErrors?: Record<string, string>;
+        referenceNumber?: string;
+        service?: string;
+        submittedAt?: string;
+        emailDispatch?: { acknowledgementSent?: boolean };
+      };
+
+      if (!response.ok || !data.referenceNumber) {
+        setFieldErrors(data.fieldErrors ?? {});
+        setFormError(
+          data.error ||
+            "Your enquiry could not be submitted right now. Your message has been kept below so you can try again or contact us via WhatsApp or email."
+        );
+        requestAnimationFrame(() => statusRef.current?.focus());
+        return;
+      }
+
+      setSuccess({
+        referenceNumber: data.referenceNumber,
+        service: data.service ?? values.service,
+        submittedAt: data.submittedAt ?? new Date().toISOString(),
+        acknowledgementSent: Boolean(data.emailDispatch?.acknowledgementSent),
+      });
+      setValues(INITIAL_FORM_STATE);
+      requestAnimationFrame(() => statusRef.current?.focus());
+    } catch {
+      setFormError(
+        "A network error prevented your enquiry from submitting. Your details are preserved below—please retry or reach out via WhatsApp or email."
+      );
+      requestAnimationFrame(() => statusRef.current?.focus());
+    } finally {
+      submitLockRef.current = false;
+      setSubmitting(false);
     }
   }
-
-  function handleReset() {
-    setValues({
-      fullName: "",
-      email: "",
-      subject: "",
-      service: "Study",
-      message: "",
-      consent: false,
-    });
-    setErrors({});
-    setValidatedPreviewReady(false);
-  }
-
-  const mailtoSubject = encodeURIComponent(
-    `[${values.service}] ${values.subject.trim() || "SchengeN Routes Enquiry"}`
-  );
-  const mailtoBody = encodeURIComponent(
-    `Name: ${values.fullName.trim()}\nEmail: ${values.email.trim()}\nService of Interest: ${values.service}\n\nMessage:\n${values.message.trim()}`
-  );
-  const directMailtoHref = `mailto:${BRAND.email}?subject=${mailtoSubject}&body=${mailtoBody}`;
 
   return (
     <Card variant="default" padding="lg">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <Eyebrow>Enquiry Form</Eyebrow>
-        <Badge variant="neutral">Frontend Preview · M9 Backend Pending</Badge>
+        <Eyebrow>Enquiry &amp; Consultation Form</Eyebrow>
+        <Badge variant="accent">{BRAND.serviceLine}</Badge>
       </div>
 
       <Heading as="h2" size="h3" className="mt-2">
-        Prepare Your Enquiry
+        Send an Enquiry or Consultation Request
       </Heading>
 
       <Paragraph size="sm" className="mt-2">
-        Complete the fields below to structure your question. Automated web-form submission is
-        scheduled for Milestone 9; once validated, you can send your prepared message directly via
-        email or WhatsApp.
+        Share your question about studying, visa guidance, travel, or exploring Europe.
+        Informational guidance does not guarantee university admission or visa approval.
       </Paragraph>
 
       <div
@@ -138,11 +200,89 @@ export function ContactForm() {
         className="border-brand-gold/45 bg-surface-subtle text-text-secondary mt-4 rounded-lg border px-4 py-3 text-xs"
       >
         <strong className="font-heading text-text-primary font-semibold">Privacy Notice:</strong> Do
-        not submit passports, identity cards, bank statements, visa documents, or other sensitive
-        personal records through this general enquiry form.
+        not include passports, identity documents, bank statements, or other sensitive personal
+        records in your message.
       </div>
 
-      <form onSubmit={handleSubmit} noValidate className="mt-6 space-y-4">
+      {success ? (
+        <div
+          ref={statusRef}
+          tabIndex={-1}
+          role="status"
+          aria-live="polite"
+          className="border-brand-blue/40 bg-surface-subtle mt-6 rounded-lg border p-4 text-sm focus:outline-none"
+        >
+          <p className="font-heading text-brand-navy font-semibold">
+            Enquiry Received — Reference {success.referenceNumber}
+          </p>
+          <p className="text-text-secondary mt-1.5 text-xs leading-relaxed">
+            Thank you. Your <strong>{success.service}</strong> enquiry has been recorded with
+            reference <strong>{success.referenceNumber}</strong> and our team will review it.
+            {success.acknowledgementSent
+              ? " A confirmation email has also been sent to your address."
+              : ""}
+          </p>
+          <div className="mt-4">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => {
+                setSuccess(null);
+                setFormError(null);
+                setFieldErrors({});
+              }}
+            >
+              Submit Another Enquiry
+            </Button>
+          </div>
+        </div>
+      ) : null}
+
+      {formError ? (
+        <div
+          ref={statusRef}
+          tabIndex={-1}
+          role="alert"
+          aria-live="assertive"
+          className="mt-6 rounded-lg border border-red-300 bg-red-50 p-4 text-xs text-red-900 focus:outline-none"
+        >
+          <p className="font-heading font-semibold">Submission Could Not Be Completed</p>
+          <p className="mt-1 leading-relaxed">{formError}</p>
+          <div className="mt-3 flex flex-wrap items-center gap-3">
+            <a
+              href={`mailto:${BRAND.email}`}
+              className="font-heading text-brand-blue hover:text-brand-navy font-semibold underline underline-offset-4"
+            >
+              Email {BRAND.email}
+            </a>
+            <a
+              href={BRAND.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-heading text-brand-blue hover:text-brand-navy font-semibold underline underline-offset-4"
+            >
+              WhatsApp {BRAND.phoneDisplay} ↗
+            </a>
+          </div>
+        </div>
+      ) : null}
+
+      <form onSubmit={handleSubmit} noValidate aria-busy={submitting} className="mt-6 space-y-4">
+        {/* Honeypot field for automated spam protection */}
+        <div className="hidden" aria-hidden="true">
+          <label htmlFor="contact-website">Website</label>
+          <input
+            id="contact-website"
+            name="website"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            value={values.website}
+            onChange={(e) => setValues((prev) => ({ ...prev, website: e.target.value }))}
+          />
+        </div>
+
         <div className="grid gap-4 sm:grid-cols-2">
           <Input
             id="contact-full-name"
@@ -152,12 +292,14 @@ export function ContactForm() {
             autoComplete="name"
             placeholder="Your full name"
             required
+            disabled={submitting}
             value={values.fullName}
-            error={errors.fullName}
+            error={fieldErrors.fullName}
             onChange={(e) => {
               setValues((prev) => ({ ...prev, fullName: e.target.value }));
-              if (errors.fullName) setErrors((prev) => ({ ...prev, fullName: undefined }));
-              setValidatedPreviewReady(false);
+              if (fieldErrors.fullName) {
+                setFieldErrors((prev) => ({ ...prev, fullName: "" }));
+              }
             }}
           />
 
@@ -169,12 +311,14 @@ export function ContactForm() {
             autoComplete="email"
             placeholder="name@example.com"
             required
+            disabled={submitting}
             value={values.email}
-            error={errors.email}
+            error={fieldErrors.email}
             onChange={(e) => {
               setValues((prev) => ({ ...prev, email: e.target.value }));
-              if (errors.email) setErrors((prev) => ({ ...prev, email: undefined }));
-              setValidatedPreviewReady(false);
+              if (fieldErrors.email) {
+                setFieldErrors((prev) => ({ ...prev, email: "" }));
+              }
             }}
           />
         </div>
@@ -190,22 +334,31 @@ export function ContactForm() {
             <select
               id="contact-service"
               name="service"
+              disabled={submitting}
+              aria-invalid={Boolean(fieldErrors.service)}
               value={values.service}
               onChange={(e) => {
                 setValues((prev) => ({
                   ...prev,
-                  service: e.target.value as ServiceOption,
+                  service: e.target.value as EnquiryService,
                 }));
-                setValidatedPreviewReady(false);
+                if (fieldErrors.service) {
+                  setFieldErrors((prev) => ({ ...prev, service: "" }));
+                }
               }}
-              className="border-border-default focus:border-brand-blue focus:ring-brand-blue/20 rounded-input text-text-primary h-11 w-full border bg-white px-3 text-sm focus:ring-2 focus:outline-none"
+              className="border-border-default focus:border-brand-blue focus:ring-brand-blue/20 rounded-input text-text-primary h-11 w-full border bg-white px-3 text-sm focus:ring-2 focus:outline-none disabled:opacity-60"
             >
-              {SERVICE_OPTIONS.map((option) => (
+              {ENQUIRY_SERVICES.map((option) => (
                 <option key={option} value={option}>
                   {option}
                 </option>
               ))}
             </select>
+            {fieldErrors.service ? (
+              <p role="alert" className="mt-1.5 text-xs font-medium text-red-700">
+                {fieldErrors.service}
+              </p>
+            ) : null}
           </div>
 
           <Input
@@ -215,14 +368,82 @@ export function ContactForm() {
             type="text"
             placeholder="e.g., Master's programmes in Germany"
             required
+            disabled={submitting}
             value={values.subject}
-            error={errors.subject}
+            error={fieldErrors.subject}
             onChange={(e) => {
               setValues((prev) => ({ ...prev, subject: e.target.value }));
-              if (errors.subject) setErrors((prev) => ({ ...prev, subject: undefined }));
-              setValidatedPreviewReady(false);
+              if (fieldErrors.subject) {
+                setFieldErrors((prev) => ({ ...prev, subject: "" }));
+              }
             }}
           />
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-3">
+          <Input
+            id="contact-country-residence"
+            name="countryOfResidence"
+            label="Country of Residence (Optional)"
+            type="text"
+            autoComplete="country-name"
+            placeholder="e.g., Hungary"
+            disabled={submitting}
+            value={values.countryOfResidence}
+            error={fieldErrors.countryOfResidence}
+            onChange={(e) => {
+              setValues((prev) => ({ ...prev, countryOfResidence: e.target.value }));
+            }}
+          />
+
+          <Input
+            id="contact-destination-country"
+            name="destinationCountry"
+            label="Destination Country (Optional)"
+            type="text"
+            placeholder="e.g., Austria"
+            disabled={submitting}
+            value={values.destinationCountry}
+            error={fieldErrors.destinationCountry}
+            onChange={(e) => {
+              setValues((prev) => ({ ...prev, destinationCountry: e.target.value }));
+            }}
+          />
+
+          <div>
+            <label
+              htmlFor="contact-preferred-method"
+              className="font-heading text-text-primary mb-1.5 block text-sm font-semibold"
+            >
+              Preferred Contact Method (Optional)
+            </label>
+            <select
+              id="contact-preferred-method"
+              name="preferredContact"
+              disabled={submitting}
+              aria-invalid={Boolean(fieldErrors.preferredContact)}
+              value={values.preferredContact}
+              onChange={(e) => {
+                setValues((prev) => ({
+                  ...prev,
+                  preferredContact: e.target.value as "" | PreferredContactMethod,
+                }));
+              }}
+              className="border-border-default focus:border-brand-blue focus:ring-brand-blue/20 rounded-input text-text-primary h-11 w-full border bg-white px-3 text-sm focus:ring-2 focus:outline-none disabled:opacity-60"
+            >
+              <option value="">No preference</option>
+              {PREFERRED_CONTACT_METHODS.map((method) => (
+                <option key={method} value={method}>
+                  {method}
+                </option>
+              ))}
+            </select>
+            {fieldErrors.preferredContact ? (
+              <p role="alert" className="mt-1.5 text-xs font-medium text-red-700">
+                {fieldErrors.preferredContact}
+              </p>
+            ) : null}
+          </div>
         </div>
 
         <Textarea
@@ -232,93 +453,73 @@ export function ContactForm() {
           rows={5}
           placeholder="Include your service of interest, country or destination, and your general question (do not include sensitive documents)."
           required
+          disabled={submitting}
           value={values.message}
-          error={errors.message}
+          error={fieldErrors.message}
           onChange={(e) => {
             setValues((prev) => ({ ...prev, message: e.target.value }));
-            if (errors.message) setErrors((prev) => ({ ...prev, message: undefined }));
-            setValidatedPreviewReady(false);
+            if (fieldErrors.message) {
+              setFieldErrors((prev) => ({ ...prev, message: "" }));
+            }
           }}
         />
 
         <div>
           <label
-            htmlFor="contact-consent"
+            htmlFor="contact-privacy-acknowledged"
             className="text-text-secondary flex cursor-pointer items-start gap-2.5 text-xs leading-relaxed"
           >
             <input
-              id="contact-consent"
-              name="consent"
+              id="contact-privacy-acknowledged"
+              name="privacyAcknowledged"
               type="checkbox"
-              checked={values.consent}
-              aria-invalid={Boolean(errors.consent)}
-              aria-describedby={errors.consent ? "contact-consent-error" : undefined}
+              disabled={submitting}
+              checked={values.privacyAcknowledged}
+              aria-invalid={Boolean(fieldErrors.privacyAcknowledged)}
+              aria-describedby={
+                fieldErrors.privacyAcknowledged ? "contact-privacy-error" : undefined
+              }
               onChange={(e) => {
-                setValues((prev) => ({ ...prev, consent: e.target.checked }));
-                if (errors.consent) setErrors((prev) => ({ ...prev, consent: undefined }));
-                setValidatedPreviewReady(false);
+                setValues((prev) => ({ ...prev, privacyAcknowledged: e.target.checked }));
+                if (fieldErrors.privacyAcknowledged) {
+                  setFieldErrors((prev) => ({ ...prev, privacyAcknowledged: "" }));
+                }
               }}
               className="border-border-default accent-brand-navy mt-0.5 h-4 w-4 rounded"
             />
             <span>
-              I confirm this is a general enquiry and does not include passport, identity, or
-              financial documents. (Dedicated Privacy Policy page will be published in Milestone
-              13.)
+              I acknowledge that this general enquiry form does not collect passports, identity
+              cards, or financial documents. (Full Privacy Policy is scheduled for Milestone 13.)
             </span>
           </label>
-          {errors.consent ? (
+          {fieldErrors.privacyAcknowledged ? (
             <p
-              id="contact-consent-error"
+              id="contact-privacy-error"
               role="alert"
               className="mt-1.5 text-xs font-medium text-red-700"
             >
-              {errors.consent}
+              {fieldErrors.privacyAcknowledged}
             </p>
           ) : null}
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 pt-2">
-          <Button type="submit" variant="primary" size="md">
-            Validate &amp; Prepare Enquiry
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+          <Button type="submit" variant="primary" size="md" disabled={submitting}>
+            {submitting ? "Submitting Enquiry..." : "Submit Enquiry"}
           </Button>
-          <Button type="button" variant="ghost" size="md" onClick={handleReset}>
-            Clear Form
-          </Button>
-        </div>
-      </form>
-
-      {validatedPreviewReady ? (
-        <div
-          role="status"
-          aria-live="polite"
-          className="border-brand-blue/35 bg-surface-subtle mt-6 rounded-lg border p-4 text-xs"
-        >
-          <p className="font-heading text-brand-navy text-sm font-semibold">
-            Enquiry Ready — Direct Submission Notice
-          </p>
-          <p className="text-text-secondary mt-1.5 leading-relaxed">
-            Your enquiry has <strong>not</strong> been transmitted automatically yet because server
-            submission will be enabled in Milestone 9. To reach {BRAND.name} right now without
-            losing your message, use one of our official direct channels below:
-          </p>
-          <div className="mt-3.5 flex flex-wrap items-center gap-3">
-            <a
-              href={directMailtoHref}
-              className="font-heading bg-brand-navy hover:bg-brand-blue inline-flex items-center rounded-md px-3.5 py-2 text-xs font-semibold text-white transition-colors"
-            >
-              Open Pre-filled Email ({BRAND.email}) ↗
-            </a>
+          <span className="text-text-muted text-xs">
+            Prefer direct chat?{" "}
             <a
               href={BRAND.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-heading border-border-default text-brand-blue hover:border-brand-blue hover:text-brand-navy inline-flex items-center rounded-md border bg-white px-3.5 py-2 text-xs font-semibold transition-colors"
+              className="text-brand-blue hover:text-brand-navy font-semibold underline underline-offset-4"
             >
-              Contact via WhatsApp ({BRAND.phoneDisplay}) ↗
+              WhatsApp {BRAND.phoneDisplay}
             </a>
-          </div>
+          </span>
         </div>
-      ) : null}
+      </form>
     </Card>
   );
 }

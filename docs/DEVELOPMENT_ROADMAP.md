@@ -11,7 +11,7 @@
 | **M6**    | Travel                                        | Completed |
 | **M7**    | Explore Europe                                | Completed |
 | **M8**    | About Us and Contact                          | Completed |
-| **M9**    | Enquiry and Consultation System               | Pending   |
+| **M9**    | Enquiry and Consultation System               | Completed |
 | **M10**   | Search, Filtering and Structured Information  | Pending   |
 | **M11**   | SEO and Content Optimisation                  | Pending   |
 | **M12**   | Performance, Responsiveness and Accessibility | Pending   |
