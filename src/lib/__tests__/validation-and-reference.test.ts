@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { generateEnquiryReference } from "../reference";
-import { enquirySubmissionSchema, mapZodErrors } from "../validation";
+import { generateEnquiryReference } from "../enquiries/reference";
+import { enquirySubmissionSchema, mapZodErrors } from "../enquiries/validation";
 
 describe("Enquiry validation schema", () => {
   it("accepts a valid enquiry with required and optional fields", () => {

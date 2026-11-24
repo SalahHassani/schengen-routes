@@ -6,8 +6,12 @@ import {
   dispatchEnquiryEmails,
   escapeHtml,
   type EmailProvider,
-} from "../email";
-import { checkEnquiryRateLimit, extractClientIp, hashClientIdentifier } from "../rate-limit";
+} from "../enquiries/email";
+import {
+  checkEnquiryRateLimit,
+  extractClientIp,
+  hashClientIdentifier,
+} from "../enquiries/rate-limit";
 
 describe("HTML escaping and email builders", () => {
   it("escapes HTML special characters in untrusted inputs", () => {
@@ -42,7 +46,8 @@ describe("HTML escaping and email builders", () => {
     const ack = buildVisitorAcknowledgementEmail(payload, "noreply@example.org");
     assert.equal(ack.to, "liam@example.com");
     assert.ok(ack.text.includes("SNR-ABCDEF2345"));
-    assert.equal(ack.text.toLowerCase().includes("guarantee"), false);
+    assert.equal(ack.text.toLowerCase().includes("does not guarantee"), true);
+    assert.equal(ack.text.toLowerCase().includes("will guarantee"), false);
   });
 
   it("handles provider errors gracefully without throwing", async () => {
