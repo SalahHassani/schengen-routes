@@ -1,24 +1,109 @@
 @import "tailwindcss";
 
 :root {
-  --color-white: #ffffff;
-  --color-navy: #102a43;
-  --color-eu-blue: #174a78;
-  --color-gold: #c5a15a;
+  /* Primary Brand Colours */
+  --color-brand-white: #ffffff;
+  --color-brand-navy: #102a43;
+  --color-brand-blue: #174a78;
+  --color-brand-gold: #c5a15a;
+
+  /* Supporting Neutrals */
+  --color-neutral-50: #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+
+  /* Semantic Surfaces & Text */
+  --surface-page: var(--color-brand-white);
+  --surface-subtle: var(--color-neutral-50);
+  --surface-muted: var(--color-neutral-100);
+  --surface-navy: var(--color-brand-navy);
+  --surface-blue-tint: #f0f5fa;
+  --surface-gold-tint: #fbf8f1;
+
+  --text-primary: var(--color-brand-navy);
+  --text-secondary: var(--color-neutral-700);
+  --text-muted: var(--color-neutral-500);
+  --text-inverse: var(--color-brand-white);
+  --text-accent: var(--color-brand-blue);
+
+  /* Borders & Focus */
+  --border-subtle: var(--color-neutral-200);
+  --border-default: var(--color-neutral-300);
+  --border-accent: var(--color-brand-blue);
+  --border-gold: var(--color-brand-gold);
+  --focus-ring: var(--color-brand-blue);
+
+  /* Semantic Status */
+  --color-success: #15803d;
+  --color-warning: #b45309;
+  --color-error: #b91c1c;
+
+  /* Radii & Shadows */
+  --radius-button: 0.5rem;
+  --radius-input: 0.5rem;
+  --radius-card: 0.875rem;
+  --radius-badge: 9999px;
+
+  --shadow-subtle: 0 1px 2px 0 rgb(16 42 67 / 0.05);
+  --shadow-card: 0 4px 16px -2px rgb(16 42 67 / 0.07), 0 1px 3px 0 rgb(16 42 67 / 0.04);
+  --shadow-elevated: 0 14px 32px -6px rgb(16 42 67 / 0.12), 0 4px 10px -2px rgb(16 42 67 / 0.05);
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 300ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
 }
 
 @theme inline {
-  --color-brand-white: var(--color-white);
-  --color-brand-navy: var(--color-navy);
-  --color-brand-blue: var(--color-eu-blue);
-  --color-brand-gold: var(--color-gold);
+  --color-brand-white: var(--color-brand-white);
+  --color-brand-navy: var(--color-brand-navy);
+  --color-brand-blue: var(--color-brand-blue);
+  --color-brand-gold: var(--color-brand-gold);
+
+  --color-surface-page: var(--surface-page);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-navy: var(--surface-navy);
+  --color-surface-blue-tint: var(--surface-blue-tint);
+  --color-surface-gold-tint: var(--surface-gold-tint);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-inverse: var(--text-inverse);
+  --color-text-accent: var(--text-accent);
+
+  --color-border-subtle: var(--border-subtle);
+  --color-border-default: var(--border-default);
+  --color-border-accent: var(--border-accent);
+  --color-border-gold: var(--border-gold);
+
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-button: var(--radius-button);
+  --radius-input: var(--radius-input);
+  --radius-card: var(--radius-card);
+
+  --shadow-subtle: var(--shadow-subtle);
+  --shadow-card: var(--shadow-card);
+  --shadow-elevated: var(--shadow-elevated);
 }
 
+html,
 body {
-  background-color: var(--color-white);
-  color: var(--color-navy);
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: var(--surface-page);
+  color: var(--text-primary);
   font-family: var(--font-sans);
 }
 
@@ -29,4 +114,20 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
