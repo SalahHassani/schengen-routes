@@ -1,35 +1,41 @@
 import type { Metadata } from "next";
-import { Badge } from "@/components/ui/badge";
+import { ContactForm } from "@/components/contact/contact-form";
+import { ContactGuidance } from "@/components/contact/contact-guidance";
+import { ContactHero } from "@/components/contact/contact-hero";
+import { ContactInformation } from "@/components/contact/contact-information";
 import { Container } from "@/components/ui/container";
-import { Divider } from "@/components/ui/divider";
-import { Heading } from "@/components/ui/heading";
-import { Eyebrow, Paragraph } from "@/components/ui/paragraph";
 import { Section } from "@/components/ui/section";
-import { CONTACT } from "@/lib/constants";
+import { BRAND } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Contact & Consultation",
-  description:
-    "Get in touch with SchengeN Routes for European study guidance, visa preparation support, or travel consultation.",
+  title: `Contact Us | ${BRAND.name}`,
+  description: `Get in touch with ${BRAND.name} (${BRAND.tagline}) via official email (${BRAND.email}), WhatsApp (${BRAND.phoneDisplay}), or our official social channels.`,
+  openGraph: {
+    title: `Contact ${BRAND.name} — Let's Talk About Your European Journey`,
+    description: `Have a question about studying, travelling or exploring Europe? Reach ${BRAND.name} via official channels.`,
+    type: "website",
+  },
 };
 
 export default function ContactPage() {
   return (
-    <Section background="white" spacing="lg">
-      <Container size="narrow">
-        <Badge variant="accent">Milestones 8 & 9 • Section Placeholder</Badge>
-        <Eyebrow className="mt-4">Get Consultation</Eyebrow>
-        <Heading as="h1" className="mt-2">
-          Contact &amp; Consultation
-        </Heading>
-        <Divider variant="gold" className="mt-4" />
-        <Paragraph size="lg" className="mt-6">
-          Reach out to our team at{" "}
-          <span className="text-brand-navy font-semibold">{CONTACT.email}</span> or via WhatsApp at{" "}
-          <span className="text-brand-navy font-semibold">{CONTACT.whatsappDisplay}</span>. The
-          structured consultation request form will be implemented in Milestones 8 and 9.
-        </Paragraph>
-      </Container>
-    </Section>
+    <>
+      <ContactHero />
+
+      <Section background="white" spacing="lg" aria-label="Contact channels and enquiry form">
+        <Container>
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
+            <div className="lg:col-span-5">
+              <ContactInformation />
+            </div>
+            <div className="lg:col-span-7">
+              <ContactForm />
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      <ContactGuidance />
+    </>
   );
 }

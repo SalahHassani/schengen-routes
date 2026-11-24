@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.9.0] - Milestone 8: About Us and Contact Pages
+
+### Added
+
+- Centralised official brand, email (`schengenroutes@gmail.com`), WhatsApp (`+36 70 792 3072` / `https://wa.me/36707923072`), WhatsApp Community, Instagram, Facebook, and TikTok constants in `src/lib/constants.ts`.
+- Built About Us section components in `src/components/about/` (`AboutHero`, `MissionVision`, `CoreValues`, `AboutServices`, `OurApproach`, `AboutCTA`) and upgraded `src/app/about/page.tsx`.
+- Built Contact Us section components in `src/components/contact/` (`ContactHero`, `ContactInformation`, `SocialLinks`, `ContactForm`, `ContactGuidance`) and upgraded `src/app/contact/page.tsx` with accessible client validation, sensitive-document privacy guidance, and honest M9 backend pending notice with pre-filled `mailto:` / WhatsApp fallbacks.
+- Created `docs/ABOUT_AND_CONTACT.md` and updated `docs/WEBSITE_REQUIREMENTS.md`, `docs/TECHNICAL_ARCHITECTURE.md`, `docs/DEVELOPMENT_ROADMAP.md`, and `docs/CHANGELOG.md`.
+
 ## [0.8.0] - Milestone 7: Explore Europe Discovery Platform
 
 ### Added

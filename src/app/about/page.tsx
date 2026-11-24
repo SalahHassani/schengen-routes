@@ -1,32 +1,31 @@
 import type { Metadata } from "next";
-import { Badge } from "@/components/ui/badge";
-import { Container } from "@/components/ui/container";
-import { Divider } from "@/components/ui/divider";
-import { Heading } from "@/components/ui/heading";
-import { Eyebrow, Paragraph } from "@/components/ui/paragraph";
-import { Section } from "@/components/ui/section";
+import { AboutCTA } from "@/components/about/about-cta";
+import { AboutHero } from "@/components/about/about-hero";
+import { AboutServices } from "@/components/about/about-services";
+import { CoreValues } from "@/components/about/core-values";
+import { MissionVision } from "@/components/about/mission-vision";
+import { OurApproach } from "@/components/about/our-approach";
 import { BRAND } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "About Us",
-  description: `Learn about ${BRAND.name} — connecting students, applicants, and travellers with reliable European education, visa, travel, and discovery resources.`,
+  title: `About Us | ${BRAND.name}`,
+  description: `${BRAND.name} — ${BRAND.tagline}. Learn about our mission, vision, values, and structured approach to helping people discover Study, Visa Guide, Travel, and Explore opportunities across Europe.`,
+  openGraph: {
+    title: `About ${BRAND.name} — Connecting People with European Opportunities`,
+    description: `${BRAND.tagline} — helping people discover opportunities to study, travel and explore across Europe.`,
+    type: "website",
+  },
 };
 
 export default function AboutPage() {
   return (
-    <Section background="white" spacing="lg">
-      <Container size="narrow">
-        <Badge variant="neutral">Milestone 8 • Section Placeholder</Badge>
-        <Eyebrow className="mt-4">{BRAND.tagline}</Eyebrow>
-        <Heading as="h1" className="mt-2">
-          About {BRAND.name}
-        </Heading>
-        <Divider variant="gold" className="mt-4" />
-        <Paragraph size="lg" className="mt-6">
-          {BRAND.name} connects students, applicants, and travellers with structured European
-          education opportunities, transparent visa information, and curated travel guidance.
-        </Paragraph>
-      </Container>
-    </Section>
+    <>
+      <AboutHero />
+      <MissionVision />
+      <CoreValues />
+      <AboutServices />
+      <OurApproach />
+      <AboutCTA />
+    </>
   );
 }
