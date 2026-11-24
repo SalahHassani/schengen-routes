@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ExploreArticleLayout } from "@/components/explore/explore-article-layout";
 import { ExploreCta } from "@/components/explore/explore-cta";
+import { JsonLd } from "@/components/seo/json-ld";
 import { EXPLORE_PLACES } from "@/data/explore/places";
-import { BRAND } from "@/lib/constants";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { buildBreadcrumbJsonLd } from "@/lib/seo/structured-data";
 
 interface LandmarkDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -20,20 +22,22 @@ export async function generateMetadata({ params }: LandmarkDetailPageProps): Pro
   const place = LANDMARK_PLACES.find((item) => item.slug === slug);
 
   if (!place) {
-    return {
-      title: `Landmark Not Found | ${BRAND.name}`,
-    };
+    return buildPageMetadata({
+      title: "Landmark Not Found",
+      description: "The requested European landmark entry could not be found.",
+      pathname: `/explore/landmarks/${slug}`,
+      noIndex: true,
+    });
   }
 
-  return {
-    title: `${place.name} — European Landmarks | ${BRAND.name}`,
+  return buildPageMetadata({
+    title: `${place.name} — European Landmarks`,
     description: place.description,
-    openGraph: {
-      title: `${place.name} | ${BRAND.name}`,
-      description: place.description,
-      type: "article",
-    },
-  };
+    pathname: `/explore/landmarks/${place.slug}`,
+    ogType: "article",
+    imagePath: place.image,
+    imageAlt: place.imageAlt,
+  });
 }
 
 export default async function LandmarkDetailPage({ params }: LandmarkDetailPageProps) {
@@ -48,6 +52,14 @@ export default async function LandmarkDetailPage({ params }: LandmarkDetailPageP
 
   return (
     <>
+      <JsonLd
+        data={buildBreadcrumbJsonLd([
+          { name: "Home", pathname: "/" },
+          { name: "Explore", pathname: "/explore" },
+          { name: "Landmarks & Architecture", pathname: "/explore/landmarks" },
+          { name: place.name, pathname: `/explore/landmarks/${place.slug}` },
+        ])}
+      />
       <ExploreArticleLayout
         breadcrumbs={[
           { label: "Home", href: "/" },

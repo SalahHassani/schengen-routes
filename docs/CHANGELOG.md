@@ -2,13 +2,42 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.12.0] - Milestone 11: SEO and Content Optimisation
+
+### Added
+
+- Centralized SEO configuration, canonical URL normalization, metadata builders, and JSON-LD generators in `src/lib/seo/` (`config.ts`, `canonical.ts`, `metadata.ts`, `structured-data.ts`) and `<JsonLd />` (`src/components/seo/json-ld.tsx`).
+- Environment-safe `NEXT_PUBLIC_SITE_URL=` placeholder in `.env.example` rejecting unset or `localhost` origins from canonical and sitemap output without fabricating a production domain.
+- Dynamic XML sitemap (`src/app/sitemap.ts`) and crawl rules (`src/app/robots.ts`).
+- Root layout `Organization` and `WebSite` JSON-LD (`src/app/layout.tsx`) and unified dynamic route metadata, canonicals, and `BreadcrumbList` / `Article` JSON-LD across `/explore/{landmarks,stories,experiences}/[slug]`.
+- Automated SEO unit tests (`src/lib/__tests__/seo.test.ts`) and documentation (`docs/SEO_STRATEGY.md`, `docs/TECHNICAL_SEO.md`, `docs/CONTENT_OPTIMISATION.md`).
+
+## [0.11.0] - Milestone 10: Search, Filtering, and Structured Information
+
+### Added
+
+- Unified in-memory search index (`src/lib/search/index.ts`, `src/types/search.ts`) covering Study, Visa Guide, Travel, and Explore records.
+- URL query parameter sanitization and serialization helpers (`src/lib/search/query-params.ts`).
+- Reusable search and filter UI controls (`src/components/search/search-controls.tsx`, `src/components/search/global-search-client.tsx`) and `/search` route (`src/app/search/page.tsx`) with `noindex, follow` metadata.
+- Cross-platform Node test runner (`scripts/run-tests.mjs`, `npm test`) and M10 unit test suite (`src/lib/__tests__/search-and-filtering.test.ts`).
+- Architecture and data-model documentation (`docs/SEARCH_AND_FILTERING.md`, `docs/STRUCTURED_INFORMATION.md`).
+
+## [0.10.0] - Milestone 9: Enquiry and Consultation System
+
+### Added
+
+- PostgreSQL persistence schema and migration (`prisma/schema.prisma`, `prisma.config.ts`, `src/lib/db/prisma.ts`, `prisma/migrations/20261124000000_create_enquiries/migration.sql`).
+- Server-side validation, non-sequential `SNR-` reference generation, rate limiting, HTML-escaped email builders, and POST `/api/enquiries` endpoint (`src/lib/enquiries/*`, `src/app/api/enquiries/route.ts`).
+- Connected `ContactForm` (`src/components/contact/contact-form.tsx`) to live `/api/enquiries` submissions with accessible feedback and automated unit tests (`src/lib/__tests__/validation-and-reference.test.ts`, `src/lib/__tests__/email-and-rate-limit.test.ts`).
+- Created `docs/ENQUIRY_SYSTEM.md` and `docs/ENQUIRY_SECURITY_AND_PRIVACY.md`.
+
 ## [0.9.0] - Milestone 8: About Us and Contact Pages
 
 ### Added
 
 - Centralised official brand, email (`schengenroutes@gmail.com`), WhatsApp (`+36 70 792 3072` / `https://wa.me/36707923072`), WhatsApp Community, Instagram, Facebook, and TikTok constants in `src/lib/constants.ts`.
 - Built About Us section components in `src/components/about/` (`AboutHero`, `MissionVision`, `CoreValues`, `AboutServices`, `OurApproach`, `AboutCTA`) and upgraded `src/app/about/page.tsx`.
-- Built Contact Us section components in `src/components/contact/` (`ContactHero`, `ContactInformation`, `SocialLinks`, `ContactForm`, `ContactGuidance`) and upgraded `src/app/contact/page.tsx` with accessible client validation, sensitive-document privacy guidance, and honest M9 backend pending notice with pre-filled `mailto:` / WhatsApp fallbacks.
+- Built Contact Us section components in `src/components/contact/` (`ContactHero`, `ContactInformation`, `SocialLinks`, `ContactForm`, `ContactGuidance`) and upgraded `src/app/contact/page.tsx` with accessible client validation, sensitive-document privacy guidance, and pre-filled `mailto:` / WhatsApp fallbacks.
 - Created `docs/ABOUT_AND_CONTACT.md` and updated `docs/WEBSITE_REQUIREMENTS.md`, `docs/TECHNICAL_ARCHITECTURE.md`, `docs/DEVELOPMENT_ROADMAP.md`, and `docs/CHANGELOG.md`.
 
 ## [0.8.0] - Milestone 7: Explore Europe Discovery Platform
@@ -89,13 +118,3 @@ All notable changes to this project will be documented in this file.
 - Initialized Next.js App Router project with React, TypeScript (strict mode), and Tailwind CSS.
 - Configured ESLint and Prettier (`prettier-plugin-tailwindcss`) with `lint`, `typecheck`, `format`, and `format:check` npm scripts.
 - Created modular directory structure, `.env.example`, root `README.md`, and Milestone 0 project documentation under `docs/`.
-
-## [M10] - 2026-11-24
-
-### Added
-
-- Unified in-memory search index (`src/lib/search/index.ts`, `src/types/search.ts`) covering Study, Visa Guide, Travel, and Explore records.
-- URL query parameter sanitization and serialization helpers (`src/lib/search/query-params.ts`).
-- Reusable search and filter UI controls (`src/components/search/search-controls.tsx`, `src/components/search/global-search-client.tsx`) and `/search` route (`src/app/search/page.tsx`) with `noindex, follow` metadata.
-- Cross-platform Node test runner (`scripts/run-tests.mjs`, `npm test`) and M10 unit test suite (`src/lib/__tests__/search-and-filtering.test.ts`).
-- Architecture and data-model documentation (`docs/SEARCH_AND_FILTERING.md`, `docs/STRUCTURED_INFORMATION.md`).

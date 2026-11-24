@@ -13,6 +13,6 @@
 | **M8**    | About Us and Contact                          | Completed |
 | **M9**    | Enquiry and Consultation System               | Completed |
 | **M10**   | Search, Filtering and Structured Information  | Completed |
-| **M11**   | SEO and Content Optimisation                  | Pending   |
+| **M11**   | SEO and Content Optimisation                  | Completed |
 | **M12**   | Performance, Responsiveness and Accessibility | Pending   |
 | **M13**   | Security, Legal Pages and Deployment          | Pending   |

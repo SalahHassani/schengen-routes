@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ExploreArticleLayout } from "@/components/explore/explore-article-layout";
 import { ExploreCta } from "@/components/explore/explore-cta";
+import { JsonLd } from "@/components/seo/json-ld";
 import { EXPLORE_STORIES } from "@/data/explore/stories";
-import { BRAND } from "@/lib/constants";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { buildArticleJsonLd, buildBreadcrumbJsonLd } from "@/lib/seo/structured-data";
 
 interface StoryDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -18,20 +20,22 @@ export async function generateMetadata({ params }: StoryDetailPageProps): Promis
   const story = EXPLORE_STORIES.find((item) => item.slug === slug);
 
   if (!story) {
-    return {
-      title: `Story Not Found | ${BRAND.name}`,
-    };
+    return buildPageMetadata({
+      title: "Story Not Found",
+      description: "The requested editorial story could not be found.",
+      pathname: `/explore/stories/${slug}`,
+      noIndex: true,
+    });
   }
 
-  return {
-    title: `${story.title} | ${BRAND.name}`,
+  return buildPageMetadata({
+    title: story.title,
     description: story.excerpt,
-    openGraph: {
-      title: `${story.title} | ${BRAND.name}`,
-      description: story.excerpt,
-      type: "article",
-    },
-  };
+    pathname: `/explore/stories/${story.slug}`,
+    ogType: "article",
+    imagePath: story.coverImage,
+    imageAlt: story.coverImageAlt,
+  });
 }
 
 export default async function StoryDetailPage({ params }: StoryDetailPageProps) {
@@ -47,9 +51,28 @@ export default async function StoryDetailPage({ params }: StoryDetailPageProps) 
     : (story.country ?? "Europe");
 
   const metaParts = [story.author, story.readingTime].filter(Boolean).join(" · ");
+  const pathname = `/explore/stories/${story.slug}`;
 
   return (
     <>
+      <JsonLd
+        data={buildBreadcrumbJsonLd([
+          { name: "Home", pathname: "/" },
+          { name: "Explore", pathname: "/explore" },
+          { name: "Stories", pathname: "/explore/stories" },
+          { name: story.title, pathname },
+        ])}
+      />
+      <JsonLd
+        data={buildArticleJsonLd({
+          headline: story.title,
+          description: story.excerpt,
+          pathname,
+          datePublished: story.publishedAt,
+          dateModified: story.updatedAt,
+          authorName: story.author,
+        })}
+      />
       <ExploreArticleLayout
         breadcrumbs={[
           { label: "Home", href: "/" },

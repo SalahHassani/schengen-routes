@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ExploreArticleLayout } from "@/components/explore/explore-article-layout";
 import { ExploreCta } from "@/components/explore/explore-cta";
+import { JsonLd } from "@/components/seo/json-ld";
 import { EXPLORE_EXPERIENCES } from "@/data/explore/experiences";
-import { BRAND } from "@/lib/constants";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { buildBreadcrumbJsonLd } from "@/lib/seo/structured-data";
 
 interface ExperienceDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -18,20 +20,22 @@ export async function generateMetadata({ params }: ExperienceDetailPageProps): P
   const experience = EXPLORE_EXPERIENCES.find((item) => item.slug === slug);
 
   if (!experience) {
-    return {
-      title: `Experience Not Found | ${BRAND.name}`,
-    };
+    return buildPageMetadata({
+      title: "Experience Not Found",
+      description: "The requested local experience entry could not be found.",
+      pathname: `/explore/experiences/${slug}`,
+      noIndex: true,
+    });
   }
 
-  return {
-    title: `${experience.title} — Local Experiences | ${BRAND.name}`,
+  return buildPageMetadata({
+    title: `${experience.title} — Local Experiences`,
     description: experience.description,
-    openGraph: {
-      title: `${experience.title} | ${BRAND.name}`,
-      description: experience.description,
-      type: "article",
-    },
-  };
+    pathname: `/explore/experiences/${experience.slug}`,
+    ogType: "article",
+    imagePath: experience.image,
+    imageAlt: experience.imageAlt,
+  });
 }
 
 export default async function ExperienceDetailPage({ params }: ExperienceDetailPageProps) {
@@ -42,8 +46,18 @@ export default async function ExperienceDetailPage({ params }: ExperienceDetailP
     notFound();
   }
 
+  const pathname = `/explore/experiences/${experience.slug}`;
+
   return (
     <>
+      <JsonLd
+        data={buildBreadcrumbJsonLd([
+          { name: "Home", pathname: "/" },
+          { name: "Explore", pathname: "/explore" },
+          { name: "Local Experiences", pathname: "/explore/experiences" },
+          { name: experience.title, pathname },
+        ])}
+      />
       <ExploreArticleLayout
         breadcrumbs={[
           { label: "Home", href: "/" },
