@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.7.0] - Milestone 6: European Travel Discovery Platform
+
+### Added
+
+- Defined strict Travel domain models in `src/types/travel.ts` (`TravelDestinationRecord`, `TravelCountryGuideRecord`, `TravelCityGuideRecord`, `TravelItineraryRecord`, `TravelGuideArticle`, `TransportModeGuide`, `AccommodationCategoryGuide`, `PracticalTravelTip`, `TravelFilterState`).
+- Implemented search/multi-facet filtering (`src/lib/travel/filters.ts`) and lightweight ordered route helpers (`src/lib/travel/route-utils.ts`) without fabricated coordinates, distances, or schedules.
+- Added source-backed Travel datasets in `src/data/travel/` (`destinations.ts`, `countries.ts`, `cities.ts`, `itineraries.ts`, `guides.ts`, `practical.ts`) using verified local editorial images and official national/city tourism and transport links without invented prices, schedules, or availability.
+- Built Travel UI components in `src/components/travel/` (`TravelHero`, `TravelSubnav`, `TravelIntro`, `DestinationCard`, `DestinationGrid`, `CityCard`, `CityGrid`, `TravelGuideCard`, `TravelGuideGrid`, `ItineraryCard`, `ItineraryGrid`, `TransportationSection`, `AccommodationSection`, `TravelTips`, `TravelCta`) and routes under `src/app/travel/` (`/travel`, `/travel/destinations`, `/travel/countries`, `/travel/cities`, `/travel/guides`, `/travel/itineraries`, `/travel/transportation`, `/travel/accommodation`).
+- Created `docs/TRAVEL_SECTION.md`, `docs/TRAVEL_DATA_MODEL.md`, and `docs/TRAVEL_CONTENT_SOURCES.md`, and updated `docs/WEBSITE_REQUIREMENTS.md`, `docs/TECHNICAL_ARCHITECTURE.md`, `docs/DEVELOPMENT_ROADMAP.md`, and `docs/CHANGELOG.md`.
+
 ## [0.6.0] - Milestone 5: European Visa Guide Platform Foundation
 
 ### Added

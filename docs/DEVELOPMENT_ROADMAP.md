@@ -8,7 +8,7 @@
 | **M3**    | Homepage                                      | Completed |
 | **M4**    | Study in Europe                               | Completed |
 | **M5**    | Visa Guide                                    | Completed |
-| **M6**    | Travel                                        | Pending   |
+| **M6**    | Travel                                        | Completed |
 | **M7**    | Explore Europe                                | Pending   |
 | **M8**    | About Us and Contact                          | Pending   |
 | **M9**    | Enquiry and Consultation System               | Pending   |

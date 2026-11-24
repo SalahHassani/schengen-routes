@@ -19,13 +19,12 @@ export function ReviewStatusIndicator({
   return (
     <div className="flex flex-wrap items-center gap-2 text-xs">
       <Badge variant={getReviewStatusBadgeVariant(status)}>{status}</Badge>
-      <span className="text-[11px] text-text-muted">Last reviewed: {lastReviewed}</span>
+      <span className="text-text-muted text-[11px]">Last reviewed: {lastReviewed}</span>
       {showDescription ? (
-        <span className="w-full text-[11px] text-text-secondary">
+        <span className="text-text-secondary w-full text-[11px]">
           {getReviewStatusDescription(status)}
         </span>
       ) : null}
     </div>
   );
 }
-
