@@ -21,6 +21,7 @@ export const STATIC_INDEXABLE_ROUTES: readonly {
   { path: "/visa-guide", changeFrequency: "weekly", priority: 0.9 },
   { path: "/visa-guide/schengen-visa", changeFrequency: "weekly", priority: 0.8 },
   { path: "/visa-guide/student-visa", changeFrequency: "weekly", priority: 0.8 },
+  { path: "/visa-guide/national-visas", changeFrequency: "weekly", priority: 0.8 },
   { path: "/visa-guide/countries", changeFrequency: "weekly", priority: 0.8 },
   { path: "/visa-guide/document-checklists", changeFrequency: "weekly", priority: 0.8 },
   { path: "/visa-guide/application-process", changeFrequency: "weekly", priority: 0.8 },

@@ -16,19 +16,28 @@ const rootHref = pathToFileURL(`${resolve(".")}/`).href;
 
 const hookSource = `
 import { registerHooks } from "node:module";
-import { existsSync } from "node:fs";
+import { existsSync, statSync } from "node:fs";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const rootHref = ${JSON.stringify(rootHref)};
 
+function isExistingFile(url) {
+  if (url.protocol !== "file:") return false;
+  const fsPath = fileURLToPath(url);
+  return existsSync(fsPath) && statSync(fsPath).isFile();
+}
+
 function resolveCandidate(baseUrl) {
+  const cleanHref = baseUrl.href.replace(/\\/+$/, "");
   const candidates = [
     baseUrl,
-    new URL(\`\${baseUrl.href}.ts\`),
-    new URL(\`\${baseUrl.href}/index.ts\`),
+    new URL(\`\${cleanHref}.ts\`),
+    new URL(\`\${cleanHref}.tsx\`),
+    new URL(\`\${cleanHref}/index.ts\`),
+    new URL(\`\${cleanHref}/index.tsx\`),
   ];
   for (const candidate of candidates) {
-    if (candidate.protocol === "file:" && existsSync(fileURLToPath(candidate))) {
+    if (isExistingFile(candidate)) {
       return candidate.href;
     }
   }
