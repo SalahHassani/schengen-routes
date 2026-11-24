@@ -10,9 +10,12 @@
 
 ## Architectural Boundaries
 
-- `src/app/`: Route segments, layouts, global CSS variables, and metadata.
+- `src/app/`: Route segments (`/`, `/study`, `/visa-guide`, `/travel`, `/explore`, `/about`, `/contact`), root layout (`<PageLayout>`), global CSS variables, and metadata.
+- `src/config/`: Centralized site and navigation definitions (`navigation.ts`) shared across header, mobile drawer, and footer.
 - `src/components/ui/`: Service-agnostic foundational UI primitives (`Button`, `Container`, `Section`, `Heading`, `Paragraph`, `Eyebrow`, `Card`, `Badge`, `Divider`, `Input`, `Textarea`, `Link`, `BrandLogo`).
-- `src/components/`: Layout/navigation (`layout/`, `navigation/`, starting in M2) and isolated service modules (`study/`, `visa/`, `travel/`, `explore/`, `contact/`).
+- `src/components/layout/`: Global structural shell (`SiteHeader`, `DesktopNavigation`, `MobileNavigation`, `SiteFooter`, `PageLayout`).
+- `src/components/navigation/`: Reusable active-route links (`NavLink`) and accessible dropdown menus (`NavigationDropdown`).
+- `src/components/`: Isolated service modules (`study/`, `visa/`, `travel/`, `explore/`, `contact/`) introduced in M3–M9.
 - `src/data/` & `src/lib/`: Brand constants (`constants.ts`), class merging (`utils.ts`), and normalized TypeScript datasets accessed through clean repository selectors.
 - `src/styles/`: Central design token definitions (`tokens.ts`).
 - `src/types/`: Strict domain contracts enforcing required fields such as `sourceUrl` and `lastReviewed`.

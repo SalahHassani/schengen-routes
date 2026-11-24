@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
+import { PageLayout } from "@/components/layout/page-layout";
 import { BRAND, BRAND_ASSETS } from "@/lib/constants";
 import "./globals.css";
 
@@ -36,7 +37,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${manrope.variable} h-full antialiased`}>
-      <body className="bg-surface-page text-text-primary flex min-h-full flex-col">{children}</body>
+      <body className="bg-surface-page text-text-primary flex min-h-full flex-col">
+        <PageLayout>{children}</PageLayout>
+      </body>
     </html>
   );
 }
