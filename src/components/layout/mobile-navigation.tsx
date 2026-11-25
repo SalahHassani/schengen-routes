@@ -69,7 +69,7 @@ export function MobileNavigation() {
   }
 
   return (
-    <div className="flex items-center lg:hidden">
+    <div className="flex shrink-0 items-center lg:hidden">
       <button
         ref={toggleRef}
         type="button"
@@ -77,7 +77,7 @@ export function MobileNavigation() {
         aria-controls={drawerId}
         aria-label={open ? "Close navigation menu" : "Open navigation menu"}
         onClick={() => setOpen((prev) => !prev)}
-        className="border-border-default text-brand-navy hover:border-brand-blue hover:bg-surface-blue-tint rounded-button focus-visible:outline-brand-blue inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center border bg-white p-2 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2"
+        className="border-border-default text-brand-navy hover:border-brand-blue hover:bg-surface-blue-tint rounded-button focus-visible:outline-brand-blue inline-flex min-h-11 min-w-11 shrink-0 cursor-pointer items-center justify-center border bg-white p-2 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2"
       >
         <svg
           aria-hidden="true"
@@ -97,7 +97,7 @@ export function MobileNavigation() {
           <div
             aria-hidden="true"
             onClick={closeDrawer}
-            className="bg-brand-navy/55 fixed inset-0"
+            className="bg-brand-navy/60 fixed inset-0"
           />
 
           {/* Slide-over panel */}
@@ -107,15 +107,15 @@ export function MobileNavigation() {
             role="dialog"
             aria-modal="true"
             aria-label={`${BRAND.name} mobile navigation`}
-            className="shadow-elevated relative z-10 flex h-full w-full max-w-sm flex-col overflow-y-auto bg-white"
+            className="shadow-elevated relative z-10 flex h-full w-full flex-col overflow-y-auto bg-white sm:max-w-sm"
           >
             {/* Drawer Header */}
-            <div className="border-border-subtle flex items-center justify-between gap-2 border-b px-4 py-3.5">
+            <div className="border-border-subtle sticky top-0 z-10 flex items-center justify-between gap-2 border-b bg-white px-4 py-3">
               <NextLink
                 href="/"
                 onClick={closeDrawer}
                 aria-label={`${BRAND.name} home`}
-                className="inline-flex min-w-0 items-center"
+                className="inline-flex min-w-0 shrink-0 items-center"
               >
                 <BrandLogo size="sm" surface="light" />
               </NextLink>
@@ -227,7 +227,7 @@ export function MobileNavigation() {
             </nav>
 
             {/* Drawer CTA Footer */}
-            <div className="border-border-subtle bg-surface-subtle border-t p-4">
+            <div className="border-border-subtle bg-surface-subtle sticky bottom-0 border-t p-4">
               <NextLink href={CONSULTATION_CTA.href} onClick={closeDrawer} className="block w-full">
                 <Button variant="primary" size="lg" className="w-full">
                   {CONSULTATION_CTA.label}
