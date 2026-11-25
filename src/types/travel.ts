@@ -111,6 +111,8 @@ export interface ItineraryDayPlan {
 export interface TravelItineraryRecord {
   slug: string;
   title: string;
+  coverImage?: string;
+  coverImageAlt?: string;
   description: string;
   category: ItineraryCategory;
   durationLabel: string;

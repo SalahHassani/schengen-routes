@@ -12,7 +12,7 @@ export const EXPLORE_PLACES: readonly ExplorePlace[] = [
     category: "landmarks",
     description:
       "Monumental Flavian amphitheatre at the heart of Rome's ancient civic landscape and historic urban core.",
-    image: "/assets/images/destinations/rome.jpg",
+    image: "/assets/images/unique/european-01.jpg",
     imageAlt: "Historic amphitheatre and cityscape in Rome, Italy",
     significance:
       "Represents Roman engineering, civic spectacle, and layered urban heritage spanning antiquity to the present.",
@@ -32,7 +32,7 @@ export const EXPLORE_PLACES: readonly ExplorePlace[] = [
     category: "history",
     description:
       "Medieval squares, Vltava river crossings, and layered Gothic, Renaissance, and Baroque architecture along the river.",
-    image: "/assets/images/destinations/vienna.jpg",
+    image: "/assets/images/unique/european-02.jpg",
     imageAlt: "Historic skyline, bridge, and architectural landmarks in Prague, Czech Republic",
     significance:
       "Preserves centuries of Bohemian urban planning, architectural styles, and riverfront civic life.",
@@ -52,7 +52,7 @@ export const EXPLORE_PLACES: readonly ExplorePlace[] = [
     category: "landmarks",
     description:
       "Grand riverfront architecture stretching along the Danube where Buda hills meet the Pest plain.",
-    image: "/assets/images/countries/hungary.jpg",
+    image: "/assets/images/unique/european-03.jpg",
     imageAlt: "Hungarian Parliament Building along the Danube River in Budapest, Hungary",
     significance:
       "Defines Budapest's twin-side river identity and Central European civic monumentality.",
@@ -72,7 +72,7 @@ export const EXPLORE_PLACES: readonly ExplorePlace[] = [
     category: "culture",
     description:
       "Historic boulevards, museums, coffee-house traditions, and classical music heritage in Austria's capital.",
-    image: "/assets/images/destinations/vienna.jpg",
+    image: "/assets/images/unique/european-04.jpg",
     imageAlt: "Historic architecture in Vienna, Austria",
     significance:
       "Longstanding European centre for classical composition, public architecture, and café culture.",
@@ -91,7 +91,7 @@ export const EXPLORE_PLACES: readonly ExplorePlace[] = [
     category: "nature",
     description:
       "Steep mountain slopes meeting glacial valley waters across the Eastern Alps in Austria.",
-    image: "/assets/images/countries/austria.jpg",
+    image: "/assets/images/unique/extra-campus-01.jpg",
     imageAlt: "Lakeside Alpine village and mountain scenery in Hallstatt, Austria",
     significance:
       "Illustrates how mountain settlements adapt to narrow Alpine valleys, lakes, and seasonal weather.",
@@ -110,7 +110,7 @@ export const EXPLORE_PLACES: readonly ExplorePlace[] = [
     category: "history",
     description:
       "Historic tidal island abbey and medieval stone silhouette rising above coastal flats in Normandy, France.",
-    image: "/assets/images/countries/france.jpg",
+    image: "/assets/images/unique/extra-campus-02.jpg",
     imageAlt: "Historic stone abbey architecture at Mont Saint-Michel in Normandy, France",
     significance: "Combines medieval monastic architecture with dramatic tidal coastal geography.",
     source: {

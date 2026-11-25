@@ -8,7 +8,7 @@ export const COUNTRY_VISA_GUIDES: readonly CountryVisaGuideRecord[] = [
     slug: "germany",
     name: "Germany",
     region: "Western & Central Europe",
-    imageSrc: "/assets/images/countries/germany.jpg",
+    imageSrc: "/assets/images/unique/rotterdam-01.jpg",
     imageAlt: "Historic Alpine castle and forested landscape in Bavaria, Germany",
     summary:
       "Overview of official German Federal Foreign Office visa portals, Schengen short-stay rules, and national student/long-stay residence frameworks.",
@@ -70,7 +70,7 @@ export const COUNTRY_VISA_GUIDES: readonly CountryVisaGuideRecord[] = [
     slug: "italy",
     name: "Italy",
     region: "Southern Europe",
-    imageSrc: "/assets/images/countries/italy.jpg",
+    imageSrc: "/assets/images/unique/rotterdam-02.jpg",
     imageAlt: "Panoramic view of the historic cathedral dome and skyline of Florence, Italy",
     summary:
       "Official Italian Ministry of Foreign Affairs visa portal references for Schengen short stays, study visas, and post-arrival residence permits.",
@@ -132,7 +132,7 @@ export const COUNTRY_VISA_GUIDES: readonly CountryVisaGuideRecord[] = [
     slug: "france",
     name: "France",
     region: "Western Europe",
-    imageSrc: "/assets/images/countries/france.jpg",
+    imageSrc: "/assets/images/unique/rotterdam-03.jpg",
     imageAlt: "Historic stone abbey architecture at Mont Saint-Michel in Normandy, France",
     summary:
       "Official France-Visas and Campus France references for Schengen short stays, student visas, and long-stay validation procedures.",
@@ -194,7 +194,7 @@ export const COUNTRY_VISA_GUIDES: readonly CountryVisaGuideRecord[] = [
     slug: "hungary",
     name: "Hungary",
     region: "Central Europe",
-    imageSrc: "/assets/images/countries/hungary.jpg",
+    imageSrc: "/assets/images/unique/rotterdam-04.jpg",
     imageAlt:
       "Hungarian Parliament Building illuminated along the Danube River in Budapest, Hungary",
     summary:
@@ -257,7 +257,7 @@ export const COUNTRY_VISA_GUIDES: readonly CountryVisaGuideRecord[] = [
     slug: "netherlands",
     name: "Netherlands",
     region: "Western Europe",
-    imageSrc: "/assets/images/countries/netherlands.jpg",
+    imageSrc: "/assets/images/unique/salzburg-01.jpg",
     imageAlt: "Traditional Dutch windmills along waterways at Kinderdijk in the Netherlands",
     summary:
       "Official NetherlandsWorldwide and IND (Immigration and Naturalisation Service) references for Schengen short stays and MVV/study residence procedures.",
@@ -319,7 +319,7 @@ export const COUNTRY_VISA_GUIDES: readonly CountryVisaGuideRecord[] = [
     slug: "austria",
     name: "Austria",
     region: "Central Europe",
-    imageSrc: "/assets/images/countries/austria.jpg",
+    imageSrc: "/assets/images/unique/salzburg-02.jpg",
     imageAlt: "Lakeside Alpine village and mountain scenery in Hallstatt, Austria",
     summary:
       "Official Austrian Federal Ministry (BMEIA) and OeAD references for Schengen short stays, Visa D, and Student Residence Permits.",

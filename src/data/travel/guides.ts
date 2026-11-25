@@ -10,7 +10,7 @@ export const TRAVEL_GUIDE_ARTICLES: readonly TravelGuideArticle[] = [
     category: "Trip Planning",
     summary:
       "Practical steps for pacing destinations, checking entry/visa rules early, and building a realistic multi-stop travel outline.",
-    coverImage: "/assets/images/hero/europe-hero.jpg",
+    coverImage: "/assets/images/unique/rome-01.jpg",
     coverImageAlt: "European riverfront skyline and historic architectural landmarks",
     contentSections: [
       {
@@ -44,7 +44,7 @@ export const TRAVEL_GUIDE_ARTICLES: readonly TravelGuideArticle[] = [
     category: "Cross-Border Travel",
     summary:
       "What to keep in mind when crossing borders within the Schengen Area versus travelling between Schengen and non-Schengen states.",
-    coverImage: "/assets/images/countries/austria.jpg",
+    coverImage: "/assets/images/unique/rome-02.jpg",
     coverImageAlt: "Lakeside Alpine village and mountain scenery in Hallstatt, Austria",
     contentSections: [
       {
@@ -78,7 +78,7 @@ export const TRAVEL_GUIDE_ARTICLES: readonly TravelGuideArticle[] = [
     category: "Public & Rail Transport",
     summary:
       "How urban metros, trams, buses, and national railways work in European cities—and why ticket validation rules matter.",
-    coverImage: "/assets/images/destinations/amsterdam.jpg",
+    coverImage: "/assets/images/unique/rome-03.jpg",
     coverImageAlt: "Canals and historic townhouses in Amsterdam, Netherlands",
     contentSections: [
       {
@@ -112,7 +112,7 @@ export const TRAVEL_GUIDE_ARTICLES: readonly TravelGuideArticle[] = [
     category: "Budget & Accommodation",
     summary:
       "How to evaluate locations, cancellation terms, and seasonal packing essentials without relying on unverified price estimates.",
-    coverImage: "/assets/images/destinations/rome.jpg",
+    coverImage: "/assets/images/unique/rome-04.jpg",
     coverImageAlt: "Historic amphitheatre and cityscape in Rome, Italy",
     contentSections: [
       {

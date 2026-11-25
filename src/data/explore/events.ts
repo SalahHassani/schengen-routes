@@ -8,6 +8,8 @@ export const EXPLORE_EVENTS: readonly ExploreEvent[] = [
     title: "Traditional Seasonal & Advent Markets in Germany",
     location: "Historic Town Squares across Germany",
     country: "Germany",
+    image: "/assets/images/unique/budapest-04.jpg",
+    imageAlt: "Seasonal market and historic street architecture in Germany",
     description:
       "Seasonal market traditions featuring handcrafted goods, regional treats, and festive lighting in German town centres.",
     source: {
@@ -21,6 +23,8 @@ export const EXPLORE_EVENTS: readonly ExploreEvent[] = [
     title: "Classical Music & Cultural Season in Vienna",
     location: "Concert Halls & Cultural Venues, Vienna",
     country: "Austria",
+    image: "/assets/images/unique/campus-01.jpg",
+    imageAlt: "Historic architectural facade and cultural venue in Vienna, Austria",
     description:
       "Year-round orchestral, chamber, and operatic traditions rooted in Vienna's musical heritage.",
     source: {
@@ -34,6 +38,8 @@ export const EXPLORE_EVENTS: readonly ExploreEvent[] = [
     title: "Civic & Cultural Heritage Traditions in Rome",
     location: "Historic Districts, Rome",
     country: "Italy",
+    image: "/assets/images/unique/campus-02.jpg",
+    imageAlt: "Civic landmark and heritage architecture in Rome, Italy",
     description:
       "Seasonal cultural programming, exhibitions, and architectural heritage across Rome's historic quarters.",
     source: {

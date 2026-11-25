@@ -55,7 +55,7 @@ export function AboutHero() {
             <div className="border-brand-gold/40 shadow-elevated rounded-card bg-brand-blue/20 relative overflow-hidden border">
               <div className="relative aspect-4/3 w-full">
                 <Image
-                  src="/assets/images/destinations/vienna.jpg"
+                  src="/assets/images/countries/austria.jpg"
                   alt="Historic civic architecture and boulevard in Vienna, Austria"
                   fill
                   priority

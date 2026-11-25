@@ -84,6 +84,8 @@ export interface ExploreEvent {
   title: string;
   location: string;
   country: string;
+  image?: string;
+  imageAlt?: string;
   description: string;
   /** Only populated when verified; omitted/null otherwise */
   eventDate?: string;

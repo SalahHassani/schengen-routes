@@ -7,7 +7,7 @@ export const TRAVEL_CITY_GUIDES: readonly TravelCityGuideRecord[] = [
     slug: "paris",
     name: "Paris",
     country: "France",
-    heroImage: "/assets/images/destinations/paris.jpg",
+    heroImage: "/assets/images/unique/florence-03.jpg",
     heroImageAlt: "Historic architecture and streetscape in Paris, France",
     introduction:
       "Paris is organised around walkable arrondissements, tree-lined boulevards, the Seine riverbanks, and dense public transit.",
@@ -35,7 +35,7 @@ export const TRAVEL_CITY_GUIDES: readonly TravelCityGuideRecord[] = [
     slug: "rome",
     name: "Rome",
     country: "Italy",
-    heroImage: "/assets/images/destinations/rome.jpg",
+    heroImage: "/assets/images/unique/florence-04.jpg",
     heroImageAlt: "Historic amphitheatre and cityscape in Rome, Italy",
     introduction:
       "Rome layers classical antiquity, Renaissance and Baroque landmarks, lively piazzas, and neighbourhood trattorias across its historic centre.",
@@ -71,7 +71,7 @@ export const TRAVEL_CITY_GUIDES: readonly TravelCityGuideRecord[] = [
     slug: "amsterdam",
     name: "Amsterdam",
     country: "Netherlands",
-    heroImage: "/assets/images/destinations/amsterdam.jpg",
+    heroImage: "/assets/images/unique/france-01.jpg",
     heroImageAlt: "Canals and historic townhouses in Amsterdam, Netherlands",
     introduction:
       "Amsterdam is built around concentric canal rings, historic merchant houses, museums, and a compact central core.",
@@ -99,7 +99,7 @@ export const TRAVEL_CITY_GUIDES: readonly TravelCityGuideRecord[] = [
     slug: "budapest",
     name: "Budapest",
     country: "Hungary",
-    heroImage: "/assets/images/destinations/budapest.jpg",
+    heroImage: "/assets/images/unique/germany-01.jpg",
     heroImageAlt: "Architectural skyline and river view in Budapest, Hungary",
     introduction:
       "Divided by the Danube into hilly Buda and lively Pest, Budapest combines grand civic architecture, thermal baths, and historic bridges.",
@@ -136,7 +136,7 @@ export const TRAVEL_CITY_GUIDES: readonly TravelCityGuideRecord[] = [
     slug: "vienna",
     name: "Vienna",
     country: "Austria",
-    heroImage: "/assets/images/destinations/vienna.jpg",
+    heroImage: "/assets/images/unique/italy-01.jpg",
     heroImageAlt: "Historic architecture in Vienna, Austria",
     introduction:
       "Vienna blends imperial boulevards, museums, coffee-house culture, and classical music venues with a well-connected public transit network.",
@@ -168,7 +168,7 @@ export const TRAVEL_CITY_GUIDES: readonly TravelCityGuideRecord[] = [
     slug: "prague",
     name: "Prague",
     country: "Czech Republic",
-    heroImage: "/assets/images/destinations/vienna.jpg",
+    heroImage: "/assets/images/unique/library-01.jpg",
     heroImageAlt: "Historic skyline, bridge, and architectural landmarks in Prague, Czech Republic",
     introduction:
       "Spanning the Vltava River, Prague features medieval squares, historic bridges, castle views, and compact neighbourhoods.",

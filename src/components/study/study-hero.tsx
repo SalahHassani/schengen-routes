@@ -55,7 +55,7 @@ export function StudyHero() {
             <div className="border-brand-gold/40 shadow-elevated rounded-card bg-brand-blue/20 relative overflow-hidden border">
               <div className="relative aspect-4/3 w-full">
                 <Image
-                  src="/assets/images/study/european-university-campus.jpg"
+                  src="/assets/images/countries/italy.jpg"
                   alt="European university library reading room with wooden study desks and book shelves"
                   fill
                   priority

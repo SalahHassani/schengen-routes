@@ -55,7 +55,7 @@ export function VisaHero() {
             <div className="border-brand-gold/40 shadow-elevated rounded-card bg-brand-blue/20 relative overflow-hidden border">
               <div className="relative aspect-4/3 w-full">
                 <Image
-                  src="/assets/images/hero/europe-hero.jpg"
+                  src="/assets/images/destinations/amsterdam.jpg"
                   alt="European riverfront skyline and historic architectural landmarks"
                   fill
                   priority

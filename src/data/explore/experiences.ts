@@ -13,7 +13,7 @@ export const EXPLORE_EXPERIENCES: readonly ExploreExperience[] = [
     category: "experiences",
     description:
       "Wander historic gabled facades, quiet side lanes, and canal bridges across Amsterdam's central districts.",
-    image: "/assets/images/destinations/amsterdam.jpg",
+    image: "/assets/images/unique/danube-01.jpg",
     imageAlt: "Canals and historic townhouses in Amsterdam, Netherlands",
     source: {
       title: "I amsterdam — Official Visitor Guide",
@@ -32,7 +32,7 @@ export const EXPLORE_EXPERIENCES: readonly ExploreExperience[] = [
     category: "food",
     description:
       "Experience historic urban boulevards, art collections, and classic neighbourhood café culture in Paris.",
-    image: "/assets/images/destinations/paris.jpg",
+    image: "/assets/images/unique/danube-02.jpg",
     imageAlt: "Historic Parisian streetscape and urban café neighbourhood in France",
     source: {
       title: "Paris je t'aime — Official Tourism Portal",
@@ -50,7 +50,7 @@ export const EXPLORE_EXPERIENCES: readonly ExploreExperience[] = [
     category: "nature",
     description:
       "Take in mountain ridges, crisp valley air, and lakeside views in Austria's Alpine landscape.",
-    image: "/assets/images/countries/austria.jpg",
+    image: "/assets/images/unique/danube-03.jpg",
     imageAlt: "Lakeside Alpine village and mountain scenery in Hallstatt, Austria",
     source: {
       title: "Austria Tourism — Austriatourism",
@@ -67,7 +67,7 @@ export const EXPLORE_EXPERIENCES: readonly ExploreExperience[] = [
     category: "student-life",
     description:
       "Explore historic campus grounds, shared study spaces, and multicultural student communities in Europe.",
-    image: "/assets/images/study/european-university-campus.jpg",
+    image: "/assets/images/unique/danube-04.jpg",
     imageAlt: "Students walking across a historic European university campus",
     source: {
       title: "German Academic Exchange Service (DAAD)",

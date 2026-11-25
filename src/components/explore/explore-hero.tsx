@@ -55,7 +55,7 @@ export function ExploreHero() {
             <div className="border-brand-gold/40 shadow-elevated rounded-card bg-brand-blue/20 relative overflow-hidden border">
               <div className="relative aspect-video w-full">
                 <Image
-                  src="/assets/images/hero/europe-hero.jpg"
+                  src="/assets/images/countries/france.jpg"
                   alt="Panoramic European riverfront and historic architectural landmarks"
                   fill
                   priority

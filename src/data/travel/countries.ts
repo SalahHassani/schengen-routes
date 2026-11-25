@@ -7,7 +7,7 @@ export const TRAVEL_COUNTRY_GUIDES: readonly TravelCountryGuideRecord[] = [
     slug: "germany",
     name: "Germany",
     region: "Central Europe",
-    imageSrc: "/assets/images/countries/germany.jpg",
+    imageSrc: "/assets/images/unique/library-02.jpg",
     imageAlt: "Historic Alpine castle and forested landscape in Bavaria, Germany",
     introduction:
       "Germany offers diverse urban centres, river valleys, forests, and Alpine regions connected by an extensive rail network.",
@@ -36,7 +36,7 @@ export const TRAVEL_COUNTRY_GUIDES: readonly TravelCountryGuideRecord[] = [
     slug: "italy",
     name: "Italy",
     region: "Southern Europe",
-    imageSrc: "/assets/images/countries/italy.jpg",
+    imageSrc: "/assets/images/unique/library-03.jpg",
     imageAlt: "Panoramic view of the historic cathedral dome and skyline of Florence, Italy",
     introduction:
       "Italy combines historic cities, art and architectural heritage, regional culinary traditions, and coastal and inland landscapes.",
@@ -65,7 +65,7 @@ export const TRAVEL_COUNTRY_GUIDES: readonly TravelCountryGuideRecord[] = [
     slug: "france",
     name: "France",
     region: "Western Europe",
-    imageSrc: "/assets/images/countries/france.jpg",
+    imageSrc: "/assets/images/unique/library-04.jpg",
     imageAlt: "Historic stone abbey architecture at Mont Saint-Michel in Normandy, France",
     introduction:
       "France features historic capitals, cultural institutions, diverse regional landscapes, and high-speed rail corridors.",
@@ -100,7 +100,7 @@ export const TRAVEL_COUNTRY_GUIDES: readonly TravelCountryGuideRecord[] = [
     slug: "hungary",
     name: "Hungary",
     region: "Central Europe",
-    imageSrc: "/assets/images/countries/hungary.jpg",
+    imageSrc: "/assets/images/unique/lyon-01.jpg",
     imageAlt:
       "Hungarian Parliament Building illuminated along the Danube River in Budapest, Hungary",
     introduction:
@@ -132,7 +132,7 @@ export const TRAVEL_COUNTRY_GUIDES: readonly TravelCountryGuideRecord[] = [
     slug: "netherlands",
     name: "Netherlands",
     region: "Western Europe",
-    imageSrc: "/assets/images/countries/netherlands.jpg",
+    imageSrc: "/assets/images/unique/lyon-02.jpg",
     imageAlt: "Traditional Dutch windmills along waterways at Kinderdijk in the Netherlands",
     introduction:
       "The Netherlands offers compact distances, canal cities, historic windmills, museums, and frequent rail connections.",
@@ -164,7 +164,7 @@ export const TRAVEL_COUNTRY_GUIDES: readonly TravelCountryGuideRecord[] = [
     slug: "austria",
     name: "Austria",
     region: "Central Europe",
-    imageSrc: "/assets/images/countries/austria.jpg",
+    imageSrc: "/assets/images/unique/lyon-03.jpg",
     imageAlt: "Lakeside Alpine village and mountain scenery in Hallstatt, Austria",
     introduction:
       "Austria pairs imperial urban heritage and classical music traditions with Alpine scenery and reliable rail and bus networks.",

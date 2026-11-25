@@ -63,6 +63,8 @@ export interface StudyUniversityRecord {
   country: string;
   city: string;
   institutionType: InstitutionType;
+  imageSrc?: string;
+  imageAlt?: string;
   summary: string;
   officialWebsiteUrl: string;
   officialAdmissionsUrl: string;

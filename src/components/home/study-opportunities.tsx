@@ -25,7 +25,7 @@ export function StudyOpportunities() {
             <Card variant="elevated" padding="none" className="overflow-hidden">
               <div className="bg-surface-blue-tint relative aspect-4/3 w-full overflow-hidden">
                 <Image
-                  src="/assets/images/study/european-university-campus.jpg"
+                  src="/assets/images/countries/hungary.jpg"
                   alt="European university library reading room with desks and bookshelves"
                   fill
                   sizes="(max-width: 1024px) 100vw, 42vw"

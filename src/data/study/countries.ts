@@ -7,7 +7,7 @@ export const STUDY_COUNTRIES: readonly StudyCountryRecord[] = [
     slug: "germany",
     name: "Germany",
     region: "Western & Central Europe",
-    imageSrc: "/assets/images/countries/germany.jpg",
+    imageSrc: "/assets/images/unique/extra-city-02.jpg",
     imageAlt: "Historic Alpine castle and forested landscape in Bavaria, Germany",
     summary:
       "Explore public universities, universities of applied sciences, and degree pathways across Germany.",
@@ -43,7 +43,7 @@ export const STUDY_COUNTRIES: readonly StudyCountryRecord[] = [
     slug: "italy",
     name: "Italy",
     region: "Southern Europe",
-    imageSrc: "/assets/images/countries/italy.jpg",
+    imageSrc: "/assets/images/unique/extra-city-03.jpg",
     imageAlt: "Panoramic view of the historic cathedral dome and skyline of Florence, Italy",
     summary:
       "Discover Italian state universities, polytechnics, and degree programmes across historic university cities.",
@@ -75,7 +75,7 @@ export const STUDY_COUNTRIES: readonly StudyCountryRecord[] = [
     slug: "hungary",
     name: "Hungary",
     region: "Central Europe",
-    imageSrc: "/assets/images/countries/hungary.jpg",
+    imageSrc: "/assets/images/unique/extra-city-04.jpg",
     imageAlt:
       "Hungarian Parliament Building illuminated along the Danube River in Budapest, Hungary",
     summary:
@@ -108,7 +108,7 @@ export const STUDY_COUNTRIES: readonly StudyCountryRecord[] = [
     slug: "france",
     name: "France",
     region: "Western Europe",
-    imageSrc: "/assets/images/countries/france.jpg",
+    imageSrc: "/assets/images/unique/extra-river-01.jpg",
     imageAlt: "Historic stone abbey architecture at Mont Saint-Michel in Normandy, France",
     summary:
       "Explore French public universities, grandes écoles, and degree structures across France.",
@@ -140,7 +140,7 @@ export const STUDY_COUNTRIES: readonly StudyCountryRecord[] = [
     slug: "netherlands",
     name: "Netherlands",
     region: "Western Europe",
-    imageSrc: "/assets/images/countries/netherlands.jpg",
+    imageSrc: "/assets/images/unique/extra-river-02.jpg",
     imageAlt: "Traditional Dutch windmills along waterways at Kinderdijk in the Netherlands",
     summary:
       "Learn about research universities and universities of applied sciences across the Netherlands.",
@@ -172,7 +172,7 @@ export const STUDY_COUNTRIES: readonly StudyCountryRecord[] = [
     slug: "austria",
     name: "Austria",
     region: "Central Europe",
-    imageSrc: "/assets/images/countries/austria.jpg",
+    imageSrc: "/assets/images/unique/extra-river-03.jpg",
     imageAlt: "Lakeside Alpine village and mountain scenery in Hallstatt, Austria",
     summary:
       "Discover Austrian universities and higher-education pathways across major academic cities.",

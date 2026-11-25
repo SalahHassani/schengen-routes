@@ -11,11 +11,11 @@ export const TRAVEL_DESTINATIONS: readonly TravelDestinationRecord[] = [
     category: "Alpine & Nature",
     shortDescription:
       "Historic cities, rail-connected regions, and Alpine and forested landscapes across Germany.",
-    heroImage: "/assets/images/countries/germany.jpg",
+    heroImage: "/assets/images/unique/lyon-04.jpg",
     heroImageAlt: "Historic Alpine castle and forested landscape in Bavaria, Germany",
     galleryImages: [
       {
-        src: "/assets/images/countries/germany.jpg",
+        src: "/assets/images/unique/market-01.jpg",
         alt: "Alpine hillside castle and greenery in Germany",
       },
     ],
@@ -54,15 +54,15 @@ export const TRAVEL_DESTINATIONS: readonly TravelDestinationRecord[] = [
     category: "Cultural Heritage",
     shortDescription:
       "Renaissance architecture, historic piazzas, coastal stretches, and major rail hubs across Italy.",
-    heroImage: "/assets/images/countries/italy.jpg",
+    heroImage: "/assets/images/unique/market-02.jpg",
     heroImageAlt: "Panoramic view of the historic cathedral dome and skyline of Florence, Italy",
     galleryImages: [
       {
-        src: "/assets/images/countries/italy.jpg",
+        src: "/assets/images/unique/market-03.jpg",
         alt: "Cathedral dome and historic rooftops in Florence, Italy",
       },
       {
-        src: "/assets/images/destinations/rome.jpg",
+        src: "/assets/images/unique/market-04.jpg",
         alt: "Historic amphitheatre and cityscape in Rome, Italy",
       },
     ],
@@ -101,15 +101,15 @@ export const TRAVEL_DESTINATIONS: readonly TravelDestinationRecord[] = [
     category: "Historic Cities",
     shortDescription:
       "Boulevards, riverfront heritage, museums, and rail corridors connecting Paris with regional France.",
-    heroImage: "/assets/images/countries/france.jpg",
+    heroImage: "/assets/images/unique/munich-01.jpg",
     heroImageAlt: "Historic stone abbey architecture at Mont Saint-Michel in Normandy, France",
     galleryImages: [
       {
-        src: "/assets/images/countries/france.jpg",
+        src: "/assets/images/unique/munich-02.jpg",
         alt: "Mont Saint-Michel historic monument in France",
       },
       {
-        src: "/assets/images/destinations/paris.jpg",
+        src: "/assets/images/unique/munich-03.jpg",
         alt: "Historic architecture and streetscape in Paris, France",
       },
     ],
@@ -148,16 +148,16 @@ export const TRAVEL_DESTINATIONS: readonly TravelDestinationRecord[] = [
     category: "River & Urban Routes",
     shortDescription:
       "Danube riverfront vistas, historic architecture, thermal bath traditions, and Central European rail links.",
-    heroImage: "/assets/images/countries/hungary.jpg",
+    heroImage: "/assets/images/unique/munich-04.jpg",
     heroImageAlt:
       "Hungarian Parliament Building illuminated along the Danube River in Budapest, Hungary",
     galleryImages: [
       {
-        src: "/assets/images/countries/hungary.jpg",
+        src: "/assets/images/unique/netherlands-01.jpg",
         alt: "Danube riverfront in Budapest, Hungary",
       },
       {
-        src: "/assets/images/destinations/budapest.jpg",
+        src: "/assets/images/unique/netherlands-02.jpg",
         alt: "Architectural skyline and river view in Budapest, Hungary",
       },
     ],
@@ -203,15 +203,15 @@ export const TRAVEL_DESTINATIONS: readonly TravelDestinationRecord[] = [
     category: "River & Urban Routes",
     shortDescription:
       "Canal rings, compact walkable and cycling-friendly streets, windmills, and frequent regional rail links.",
-    heroImage: "/assets/images/countries/netherlands.jpg",
+    heroImage: "/assets/images/unique/paris-01.jpg",
     heroImageAlt: "Traditional Dutch windmills along waterways at Kinderdijk in the Netherlands",
     galleryImages: [
       {
-        src: "/assets/images/countries/netherlands.jpg",
+        src: "/assets/images/unique/paris-02.jpg",
         alt: "Windmills and waterways in the Netherlands",
       },
       {
-        src: "/assets/images/destinations/amsterdam.jpg",
+        src: "/assets/images/unique/paris-03.jpg",
         alt: "Canals and historic townhouses in Amsterdam, Netherlands",
       },
     ],
@@ -246,15 +246,15 @@ export const TRAVEL_DESTINATIONS: readonly TravelDestinationRecord[] = [
     category: "Cultural Heritage",
     shortDescription:
       "Imperial palaces, classical music heritage, Alpine valleys, and dependable rail connections across Austria.",
-    heroImage: "/assets/images/countries/austria.jpg",
+    heroImage: "/assets/images/unique/paris-04.jpg",
     heroImageAlt: "Lakeside Alpine village and mountain scenery in Hallstatt, Austria",
     galleryImages: [
       {
-        src: "/assets/images/countries/austria.jpg",
+        src: "/assets/images/unique/prague-01.jpg",
         alt: "Alpine village and mountain lake in Austria",
       },
       {
-        src: "/assets/images/destinations/vienna.jpg",
+        src: "/assets/images/unique/prague-02.jpg",
         alt: "Historic architecture in Vienna, Austria",
       },
     ],
@@ -297,11 +297,11 @@ export const TRAVEL_DESTINATIONS: readonly TravelDestinationRecord[] = [
     category: "Historic Cities",
     shortDescription:
       "Historic bridges, castle quarters, cobblestone lanes, and walkable city centres across the Czech Republic.",
-    heroImage: "/assets/images/destinations/vienna.jpg",
+    heroImage: "/assets/images/unique/prague-03.jpg",
     heroImageAlt: "Historic skyline, bridge, and architectural landmarks in Prague, Czech Republic",
     galleryImages: [
       {
-        src: "/assets/images/destinations/vienna.jpg",
+        src: "/assets/images/unique/prague-04.jpg",
         alt: "Historic riverside view in Prague",
       },
     ],

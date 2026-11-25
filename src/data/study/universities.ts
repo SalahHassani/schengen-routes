@@ -9,6 +9,8 @@ export const STUDY_UNIVERSITIES: readonly StudyUniversityRecord[] = [
     country: "Germany",
     city: "Munich",
     institutionType: "Public University",
+    imageSrc: "/assets/images/unique/extra-river-04.jpg",
+    imageAlt: "University campus and academic buildings in Munich, Germany",
     summary:
       "Public research university in Bavaria offering bachelor's, master's, and doctoral programmes across engineering, natural sciences, life sciences, and management.",
     officialWebsiteUrl: "https://www.tum.de/en/",
@@ -27,6 +29,8 @@ export const STUDY_UNIVERSITIES: readonly StudyUniversityRecord[] = [
     country: "Netherlands",
     city: "Amsterdam",
     institutionType: "Public University",
+    imageSrc: "/assets/images/unique/florence-01.jpg",
+    imageAlt: "University campus and academic buildings in Munich, Germany",
     summary:
       "Public research university in Amsterdam offering bachelor's, master's, and doctoral degree programmes across humanities, social sciences, sciences, economics, and law.",
     officialWebsiteUrl: "https://www.uva.nl/en",
@@ -45,6 +49,8 @@ export const STUDY_UNIVERSITIES: readonly StudyUniversityRecord[] = [
     country: "Austria",
     city: "Vienna",
     institutionType: "Public University",
+    imageSrc: "/assets/images/unique/florence-02.jpg",
+    imageAlt: "University campus and academic buildings in Munich, Germany",
     summary:
       "Public university in Vienna offering bachelor's, master's, diploma, and doctoral programmes across a wide range of academic disciplines.",
     officialWebsiteUrl: "https://www.univie.ac.at/en/",

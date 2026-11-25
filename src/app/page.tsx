@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     siteName: BRAND.name,
     images: [
       {
-        url: "/assets/images/hero/europe-hero.jpg",
+        url: "/assets/images/backgrounds/background_image.jpg",
         width: 1600,
         height: 900,
         alt: "Panoramic European cityscape overlooking historic bridges and spires",

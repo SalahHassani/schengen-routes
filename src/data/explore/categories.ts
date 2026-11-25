@@ -8,7 +8,7 @@ export const EXPLORE_CATEGORIES: readonly ExploreCategory[] = [
     href: "/explore/culture",
     description:
       "Languages, regional customs, everyday urban traditions, and artistic expressions across Europe.",
-    image: "/assets/images/destinations/vienna.jpg",
+    image: "/assets/images/unique/amsterdam-03.jpg",
     imageAlt: "Historic civic architecture and cultural district in Vienna, Austria",
     icon: "◈",
   },
@@ -19,7 +19,7 @@ export const EXPLORE_CATEGORIES: readonly ExploreCategory[] = [
     href: "/explore/landmarks",
     description:
       "Iconic monuments, palaces, bridges, and architectural landmarks shaping European skylines.",
-    image: "/assets/images/destinations/rome.jpg",
+    image: "/assets/images/unique/amsterdam-04.jpg",
     imageAlt: "Historic Roman monument and architectural skyline in Rome, Italy",
     icon: "❖",
   },
@@ -30,7 +30,7 @@ export const EXPLORE_CATEGORIES: readonly ExploreCategory[] = [
     href: "/explore/history",
     description:
       "Historic quarters, imperial and civic centres, and heritage landscapes across centuries.",
-    image: "/assets/images/destinations/vienna.jpg",
+    image: "/assets/images/unique/berlin-01.jpg",
     imageAlt: "Historic riverside bridges, towers, and skyline in Prague, Czech Republic",
     icon: "✦",
   },
@@ -41,7 +41,7 @@ export const EXPLORE_CATEGORIES: readonly ExploreCategory[] = [
     href: "/explore/food",
     description:
       "Regional culinary traditions, coffee and café culture, markets, and local food heritage.",
-    image: "/assets/images/destinations/paris.jpg",
+    image: "/assets/images/unique/berlin-02.jpg",
     imageAlt: "Historic Parisian streetscape and urban café neighbourhood in France",
     icon: "❋",
   },
@@ -52,7 +52,7 @@ export const EXPLORE_CATEGORIES: readonly ExploreCategory[] = [
     href: "/explore/festivals",
     description:
       "Seasonal celebrations, music traditions, and cultural gatherings across European cities.",
-    image: "/assets/images/countries/germany.jpg",
+    image: "/assets/images/unique/berlin-03.jpg",
     imageAlt: "Historic Alpine castle and forested hills in Bavaria, Germany",
     icon: "✧",
   },
@@ -63,7 +63,7 @@ export const EXPLORE_CATEGORIES: readonly ExploreCategory[] = [
     href: "/explore/student-life",
     description:
       "Everyday campus life, student communities, libraries, and cultural routines in European cities.",
-    image: "/assets/images/study/european-university-campus.jpg",
+    image: "/assets/images/unique/berlin-04.jpg",
     imageAlt: "Students walking across a historic European university campus",
     icon: "❖",
   },
@@ -74,7 +74,7 @@ export const EXPLORE_CATEGORIES: readonly ExploreCategory[] = [
     href: "/explore/nature",
     description:
       "Alpine valleys, mountain lakes, waterways, forests, and outdoor scenery across Europe.",
-    image: "/assets/images/countries/austria.jpg",
+    image: "/assets/images/unique/budapest-01.jpg",
     imageAlt: "Alpine lake and mountain peaks in Hallstatt, Austria",
     icon: "◈",
   },
@@ -85,7 +85,7 @@ export const EXPLORE_CATEGORIES: readonly ExploreCategory[] = [
     href: "/explore/experiences",
     description:
       "Canal walks, thermal baths, neighbourhood districts, and distinctive local traditions.",
-    image: "/assets/images/destinations/amsterdam.jpg",
+    image: "/assets/images/unique/budapest-02.jpg",
     imageAlt: "Historic canals and gabled townhouses in Amsterdam, Netherlands",
     icon: "✦",
   },
@@ -96,7 +96,7 @@ export const EXPLORE_CATEGORIES: readonly ExploreCategory[] = [
     href: "/explore/stories",
     description:
       "Editorial essays exploring European architecture, cultural continuity, and everyday life.",
-    image: "/assets/images/hero/europe-hero.jpg",
+    image: "/assets/images/unique/budapest-03.jpg",
     imageAlt: "Panoramic European riverfront and historic architectural landmarks",
     icon: "❋",
   },

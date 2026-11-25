@@ -15,7 +15,7 @@ export const FEATURED_DESTINATIONS: readonly DestinationPreview[] = [
     country: "France",
     summary:
       "Explore historic boulevards, renowned museums, academic quarters, and timeless architectural landmarks.",
-    imageSrc: "/assets/images/destinations/paris.jpg",
+    imageSrc: "/assets/images/study/european-university-campus.jpg",
     imageAlt: "Eiffel Tower rising above the Parisian skyline in France",
     href: "/travel",
   },
@@ -25,7 +25,7 @@ export const FEATURED_DESTINATIONS: readonly DestinationPreview[] = [
     country: "Italy",
     summary:
       "Walk through millennia of classical history, lively piazzas, and expressive Italian culinary and cultural traditions.",
-    imageSrc: "/assets/images/destinations/rome.jpg",
+    imageSrc: "/assets/images/unique/alps-01.jpg",
     imageAlt: "Exterior arches of the Colosseum in Rome, Italy",
     href: "/travel",
   },
@@ -35,7 +35,7 @@ export const FEATURED_DESTINATIONS: readonly DestinationPreview[] = [
     country: "Germany",
     summary:
       "Discover contemporary arts, modern European history, international student neighbourhoods, and expansive green spaces.",
-    imageSrc: "/assets/images/destinations/berlin.jpg",
+    imageSrc: "/assets/images/unique/alps-02.jpg",
     imageAlt: "Brandenburg Gate illuminated at dusk in Berlin, Germany",
     href: "/travel",
   },
@@ -45,7 +45,7 @@ export const FEATURED_DESTINATIONS: readonly DestinationPreview[] = [
     country: "Netherlands",
     summary:
       "Experience scenic canal rings, world-class cultural collections, cycling-friendly streets, and welcoming student energy.",
-    imageSrc: "/assets/images/destinations/amsterdam.jpg",
+    imageSrc: "/assets/images/unique/alps-03.jpg",
     imageAlt: "Historic gabled canal houses and bridges in Amsterdam, Netherlands",
     href: "/travel",
   },
@@ -55,7 +55,7 @@ export const FEATURED_DESTINATIONS: readonly DestinationPreview[] = [
     country: "Hungary",
     summary:
       "Admire grand Danube riverfront architecture, historic thermal baths, and vibrant Central European cultural life.",
-    imageSrc: "/assets/images/destinations/budapest.jpg",
+    imageSrc: "/assets/images/unique/amsterdam-01.jpg",
     imageAlt: "Szechenyi Chain Bridge spanning the Danube River toward Castle Hill in Budapest",
     href: "/travel",
   },
@@ -65,7 +65,7 @@ export const FEATURED_DESTINATIONS: readonly DestinationPreview[] = [
     country: "Austria",
     summary:
       "Immerse yourself in imperial palaces, classical music heritage, café culture, and one of Europe's leading university cities.",
-    imageSrc: "/assets/images/destinations/vienna.jpg",
+    imageSrc: "/assets/images/unique/amsterdam-02.jpg",
     imageAlt: "Schonbrunn Palace facade and landscaped gardens in Vienna, Austria",
     href: "/travel",
   },

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { StudyUniversityRecord } from "@/types/study";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -11,6 +12,18 @@ export interface UniversityCardProps {
 export function UniversityCard({ university }: UniversityCardProps) {
   return (
     <Card variant="default" padding="lg" className="flex h-full flex-col">
+      {university.imageSrc ? (
+        <div className="border-border-subtle relative mb-4 aspect-video w-full overflow-hidden rounded-lg border">
+          <Image
+            src={university.imageSrc}
+            alt={university.imageAlt ?? `${university.name} campus in ${university.city}`}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+            className="object-cover"
+          />
+        </div>
+      ) : null}
+
       <div className="flex flex-wrap items-center justify-between gap-2">
         <Badge variant="default">{university.institutionType}</Badge>
         <span className="text-text-muted text-xs font-medium">
@@ -49,7 +62,7 @@ export function UniversityCard({ university }: UniversityCardProps) {
             rel="noopener noreferrer"
             className="font-heading text-brand-blue decoration-brand-blue/40 hover:text-brand-navy font-semibold underline underline-offset-4"
           >
-            Official Admissions ↗
+            Official Admissions ?
           </a>
           <a
             href={university.officialWebsiteUrl}
@@ -57,7 +70,7 @@ export function UniversityCard({ university }: UniversityCardProps) {
             rel="noopener noreferrer"
             className="font-heading text-text-secondary decoration-border-strong hover:text-brand-navy font-semibold underline underline-offset-4"
           >
-            University Website ↗
+            University Website ?
           </a>
         </div>
         <span className="text-text-muted text-[11px]">Reviewed {university.lastReviewed}</span>

@@ -61,7 +61,7 @@ export function HeroSection() {
             <div className="border-brand-gold/40 shadow-elevated rounded-card bg-brand-blue/20 relative overflow-hidden border">
               <div className="relative aspect-video w-full">
                 <Image
-                  src="/assets/images/hero/europe-hero.jpg"
+                  src="/assets/images/countries/germany.jpg"
                   alt="Panoramic European cityscape overlooking historic bridges and spires in Prague"
                   fill
                   priority
