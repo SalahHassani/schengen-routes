@@ -67,7 +67,7 @@ export const EXPLORE_EXPERIENCES: readonly ExploreExperience[] = [
     category: "student-life",
     description:
       "Explore historic campus grounds, shared study spaces, and multicultural student communities in Europe.",
-    image: "/assets/images/study/campus-life.jpg",
+    image: "/assets/images/study/european-university-campus.jpg",
     imageAlt: "Students walking across a historic European university campus",
     source: {
       title: "German Academic Exchange Service (DAAD)",

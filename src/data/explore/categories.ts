@@ -30,7 +30,7 @@ export const EXPLORE_CATEGORIES: readonly ExploreCategory[] = [
     href: "/explore/history",
     description:
       "Historic quarters, imperial and civic centres, and heritage landscapes across centuries.",
-    image: "/assets/images/destinations/prague.jpg",
+    image: "/assets/images/destinations/vienna.jpg",
     imageAlt: "Historic riverside bridges, towers, and skyline in Prague, Czech Republic",
     icon: "✦",
   },
@@ -63,7 +63,7 @@ export const EXPLORE_CATEGORIES: readonly ExploreCategory[] = [
     href: "/explore/student-life",
     description:
       "Everyday campus life, student communities, libraries, and cultural routines in European cities.",
-    image: "/assets/images/study/campus-life.jpg",
+    image: "/assets/images/study/european-university-campus.jpg",
     imageAlt: "Students walking across a historic European university campus",
     icon: "❖",
   },

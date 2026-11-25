@@ -32,7 +32,7 @@ export const EXPLORE_PLACES: readonly ExplorePlace[] = [
     category: "history",
     description:
       "Medieval squares, Vltava river crossings, and layered Gothic, Renaissance, and Baroque architecture along the river.",
-    image: "/assets/images/destinations/prague.jpg",
+    image: "/assets/images/destinations/vienna.jpg",
     imageAlt: "Historic skyline, bridge, and architectural landmarks in Prague, Czech Republic",
     significance:
       "Preserves centuries of Bohemian urban planning, architectural styles, and riverfront civic life.",

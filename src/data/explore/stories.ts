@@ -42,7 +42,7 @@ export const EXPLORE_STORIES: readonly ExploreStory[] = [
       "For academic programme and admissions details, visit the dedicated Study in Europe section; here, Explore highlights the everyday cultural texture of student cities.",
     ],
     category: "student-life",
-    coverImage: "/assets/images/study/campus-life.jpg",
+    coverImage: "/assets/images/study/european-university-campus.jpg",
     coverImageAlt: "Students walking across a historic European university campus",
     author: "SchengeN Routes Editorial Team",
     publishedAt: PUBLISHED_AT,

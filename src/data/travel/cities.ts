@@ -168,7 +168,7 @@ export const TRAVEL_CITY_GUIDES: readonly TravelCityGuideRecord[] = [
     slug: "prague",
     name: "Prague",
     country: "Czech Republic",
-    heroImage: "/assets/images/destinations/prague.jpg",
+    heroImage: "/assets/images/destinations/vienna.jpg",
     heroImageAlt: "Historic skyline, bridge, and architectural landmarks in Prague, Czech Republic",
     introduction:
       "Spanning the Vltava River, Prague features medieval squares, historic bridges, castle views, and compact neighbourhoods.",

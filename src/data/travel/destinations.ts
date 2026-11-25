@@ -297,11 +297,11 @@ export const TRAVEL_DESTINATIONS: readonly TravelDestinationRecord[] = [
     category: "Historic Cities",
     shortDescription:
       "Historic bridges, castle quarters, cobblestone lanes, and walkable city centres across the Czech Republic.",
-    heroImage: "/assets/images/destinations/prague.jpg",
+    heroImage: "/assets/images/destinations/vienna.jpg",
     heroImageAlt: "Historic skyline, bridge, and architectural landmarks in Prague, Czech Republic",
     galleryImages: [
       {
-        src: "/assets/images/destinations/prague.jpg",
+        src: "/assets/images/destinations/vienna.jpg",
         alt: "Historic riverside view in Prague",
       },
     ],
