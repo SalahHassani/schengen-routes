@@ -288,7 +288,7 @@ export function ContactForm() {
           <Input
             id="contact-full-name"
             name="fullName"
-            label="Full Name *"
+            label="Full Name"
             type="text"
             autoComplete="name"
             placeholder="Your full name"
@@ -307,7 +307,7 @@ export function ContactForm() {
           <Input
             id="contact-email"
             name="email"
-            label="Email Address *"
+            label="Email Address"
             type="email"
             autoComplete="email"
             placeholder="name@example.com"
@@ -371,7 +371,7 @@ export function ContactForm() {
           <Input
             id="contact-subject"
             name="subject"
-            label="Subject *"
+            label="Subject"
             type="text"
             placeholder="e.g., Master's programmes in Germany"
             required
@@ -463,7 +463,7 @@ export function ContactForm() {
         <Textarea
           id="contact-message"
           name="message"
-          label="Message *"
+          label="Message"
           rows={5}
           placeholder="Include your service of interest, country or destination, and your general question (do not include sensitive documents)."
           required
@@ -503,7 +503,7 @@ export function ContactForm() {
             />
             <span>
               I acknowledge that this general enquiry form does not collect passports, identity
-              cards, or financial documents. (Full Privacy Policy is scheduled for Milestone 13.)
+              cards, or financial documents.
             </span>
           </label>
           {fieldErrors.privacyAcknowledged ? (
