@@ -9,7 +9,7 @@ import { BRAND } from "@/lib/constants";
 
 export function SiteHeader() {
   return (
-    <header className="border-border-subtle shadow-subtle sticky top-0 z-40 w-full border-b bg-white/95 backdrop-blur-xs">
+    <header className="border-border-subtle shadow-subtle sticky top-0 z-40 w-full border-b bg-white">
       <a
         href="#main-content"
         className="font-heading bg-brand-navy rounded-button sr-only px-4 py-2.5 text-sm font-semibold text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50"
